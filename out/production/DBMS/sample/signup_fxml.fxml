@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="419.0" style="-fx-background-color: #380000;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SignupController">
+   <children>
+      <AnchorPane layoutX="40.0" layoutY="35.0" prefHeight="560.0" prefWidth="340.0" style="-fx-background-color: #b50000;">
+         <children>
+            <JFXTextField fx:id="first_name" focusColor="#e5e0e0" layoutX="23.0" layoutY="94.0" prefHeight="29.0" prefWidth="134.0" promptText="First name" style="-fx-prompt-text-fill: #e5e0e0; -fx-text-fill: #e5e0e0;" unFocusColor="#e5e0e0" />
+            <JFXTextField fx:id="last_name" focusColor="#e5e0e0" layoutX="184.0" layoutY="94.0" prefHeight="29.0" prefWidth="134.0" promptText="Last name" style="-fx-prompt-text-fill: #e5e0e0; -fx-text-fill: #e5e0e0;" unFocusColor="#e5e0e0" />
+            <JFXTextField fx:id="user_name" focusColor="#e5e0e0" layoutX="23.0" layoutY="151.0" prefHeight="29.0" prefWidth="295.0" promptText="Pick username" style="-fx-prompt-text-fill: #e5e0e0; -fx-text-fill: #e5e0e0;" unFocusColor="#e5e0e0" />
+            <JFXPasswordField fx:id="password1" focusColor="#e5e0e0" layoutX="23.0" layoutY="212.0" prefHeight="29.0" prefWidth="295.0" promptText="Enter password" style="-fx-text-fill: #e5e0e0; -fx-prompt-text-fill: #e5e0e0;" unFocusColor="#e5e0e0" />
+            <JFXPasswordField fx:id="password2" focusColor="#e5e0e0" layoutX="23.0" layoutY="272.0" prefHeight="29.0" prefWidth="295.0" promptText="Re-enter password" style="-fx-text-fill: #e5e0e0; -fx-prompt-text-fill: #e5e0e0;" unFocusColor="#e5e0e0" />
+            <JFXDatePicker fx:id="dob_date_picker" defaultColor="#e5e0e0" layoutX="23.0" layoutY="330.0" prefHeight="29.0" prefWidth="295.0" promptText="Date of birth" style="-fx-text-fill: #e5e0e0;" />
+            <JFXTextField fx:id="emailid" focusColor="#e5e0e0" layoutX="23.0" layoutY="386.0" prefHeight="29.0" prefWidth="295.0" promptText="E-mail ID" style="-fx-prompt-text-fill: #e5e0e0; -fx-text-fill: #e5e0e0;" unFocusColor="#e5e0e0" />
+            <JFXTextField fx:id="mob_no" focusColor="#e5e0e0" layoutX="23.0" layoutY="445.0" prefHeight="29.0" prefWidth="295.0" promptText="Mobile Number" style="-fx-prompt-text-fill: #e5e0e0; -fx-text-fill: #e5e0e0;" unFocusColor="#e5e0e0" />
+            <Label layoutX="127.0" layoutY="28.0" prefHeight="43.0" prefWidth="87.0" text="Sign up" textFill="#e5e0e0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <JFXButton layoutX="119.0" layoutY="498.0" mnemonicParsing="false" onAction="#signup" prefHeight="31.0" prefWidth="104.0" style="-fx-background-color: #ff3838;" text="Submit" textFill="#e5e0e0" />
+         </children>
+      </AnchorPane>
+      <ImageView fx:id="backbtn" fitHeight="59.0" fitWidth="79.0" layoutX="-6.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@image/back.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
