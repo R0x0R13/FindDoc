@@ -40,6 +40,6 @@
          </font>
       </Label>
       <Text fill="#a1a1a1" layoutX="46.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We find you the doctor you need!" wrappingWidth="176.6708984375" />
-      <JFXButton fx:id="signup" layoutX="40.0" layoutY="184.0" onAction="#signup" prefHeight="31.0" prefWidth="218.0" ripplerFill="#e5e0e0" style="-fx-background-color: #ff3838;" text="Sign Up" textFill="#e5e0e0" />
+      <JFXButton fx:id="signup" layoutX="40.0" layoutY="185.0" onAction="#signup" prefHeight="31.0" prefWidth="218.0" ripplerFill="#e5e0e0" style="-fx-background-color: #ff3838;" text="Sign Up" textFill="#e5e0e0" />
    </children>
 </AnchorPane>

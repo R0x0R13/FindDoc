@@ -27,7 +27,8 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <JFXButton layoutX="119.0" layoutY="498.0" mnemonicParsing="false" onAction="#signup" prefHeight="31.0" prefWidth="104.0" style="-fx-background-color: #ff3838;" text="Submit" textFill="#e5e0e0" />
+            <JFXButton layoutX="53.0" layoutY="495.0" mnemonicParsing="false" onAction="#signup" prefHeight="31.0" prefWidth="104.0" style="-fx-background-color: #ff3838;" text="Submit" textFill="#e5e0e0" />
+            <JFXButton layoutX="177.0" layoutY="495.0" mnemonicParsing="false" onAction="#reset" prefHeight="31.0" prefWidth="104.0" style="-fx-background-color: #ff3838;" text="Reset" textFill="#e5e0e0" />
          </children>
       </AnchorPane>
       <ImageView fx:id="backbtn" fitHeight="59.0" fitWidth="79.0" layoutX="-6.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">

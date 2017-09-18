@@ -72,4 +72,14 @@ public class SignupController {
         stage.setScene(scene);
         stage.show();
     }
+    @FXML void reset() {
+        user_name.clear();
+        first_name.clear();
+        last_name.clear();
+        mob_no.clear();
+        emailid.clear();
+        password1.clear();
+        password2.clear();
+        dob_date_picker.getEditor().clear();
+    }
 }
