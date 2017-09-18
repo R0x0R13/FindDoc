@@ -23,24 +23,30 @@ public class Controller {
             return true;
         return false;
     }
-    @FXML void signin() throws SQLException {
+    @FXML void signin() throws SQLException, IOException {
         String usrname = username.getText();
         String pass = password.getText();
 
         Connection con = new ConnectDatabase().connectToDatabase();
         System.out.println("Connected");
         Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("select * from login_tbl where user_name = '" + usrname +"'");
+        ResultSet rs = stmt.executeQuery("select user_name, password from login_tbl where user_name = '" + usrname +"'");
         if(!rs.next())
         {
             error.setText("User does not exist!");
-            rs.beforeFirst();
         }
-        else{
-
+        else if(pass.matches(rs.getString(2))){
+            Stage stage;
+            Parent root;
+            stage=(Stage) signup.getScene().getWindow();
+            //load up OTHER FXML document
+            root = FXMLLoader.load(getClass().getResource("dashboard.fxml"));
+            //create a new scene with root and set the stage
+            Scene scene = new Scene(root, 1000,550);
+            stage.setScene(scene);
+            stage.show();
         }
     }
-
     @FXML void signup() throws IOException{
         Stage stage;
         Parent root;
