@@ -30,7 +30,7 @@
                   <Image url="@image/profile.png" />
                </image>
             </ImageView>
-            <JFXButton layoutY="209.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="188.0" text="signout" textFill="WHITE" />
+            <JFXButton fx:id="signout" layoutY="209.0" mnemonicParsing="false" onAction="#signout" prefHeight="31.0" prefWidth="188.0" text="signout" textFill="WHITE" />
             <ImageView fitHeight="29.0" fitWidth="30.0" layoutX="9.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@image/signout.png" />

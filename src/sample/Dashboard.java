@@ -1,11 +1,18 @@
 package sample;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.sql.Connection;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -14,6 +21,8 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class Dashboard implements Initializable{
+    @FXML
+    JFXButton signout;
     @FXML
     ListView<DoctorDetail> listView;
     private ObservableList<DoctorDetail> doctorDetailObservableList;
@@ -35,6 +44,19 @@ public class Dashboard implements Initializable{
         }
     }
 
+    public void signout() throws IOException {
+        Stage stage;
+        Parent root;
+        //get reference to the button's stage
+        stage=(Stage) signout.getScene().getWindow();
+        //load up OTHER FXML document
+        root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        //create a new scene with root and set the stage
+        Scene scene = new Scene(root, 700,400);
+        stage.setScene(scene);
+        stage.show();
+
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         listView.setItems(doctorDetailObservableList);
