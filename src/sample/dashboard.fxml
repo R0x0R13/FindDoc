@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -9,9 +10,9 @@
 
 <AnchorPane prefHeight="549.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Dashboard">
    <children>
-      <AnchorPane prefHeight="549.0" prefWidth="188.0" style="-fx-background-color: b50000;">
+      <AnchorPane prefHeight="549.0" prefWidth="188.0" style="-fx-background-color: #380000;">
          <children>
-            <JFXButton layoutY="116.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="188.0" text="search doctor" textFill="WHITE" />
+            <JFXButton buttonType="RAISED" layoutY="116.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="188.0" style="-fx-background-color: #b50000;" text="search doctor" textFill="WHITE" />
             <ImageView fitHeight="29.0" fitWidth="30.0" layoutX="9.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@image/search.png" />
@@ -44,5 +45,10 @@
                </font>
             </Label>
          </children></AnchorPane>
+      <AnchorPane layoutX="205.0" layoutY="107.0" prefHeight="419.0" prefWidth="768.0">
+         <children>
+            <ListView fx:id="listView" prefHeight="419.0" prefWidth="768.0" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
