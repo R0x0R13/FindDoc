@@ -24,7 +24,7 @@ public class DashboardController implements Initializable{
     @FXML ListView<DoctorDetail> listView;
     private UserProfile userProfile;
     private ObservableList<DoctorDetail> doctorDetailObservableList;
-    
+
     void initData(String user_name) throws SQLException {
         Connection con = new ConnectDatabase().connectToDatabase();
         Statement stmt = con.createStatement();
