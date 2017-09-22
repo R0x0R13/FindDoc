@@ -8,12 +8,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
 
-public class Controller {
+public class LoginController {
     @FXML JFXTextField username;
     @FXML JFXPasswordField password;
     @FXML JFXButton signup;
@@ -37,20 +39,23 @@ public class Controller {
         }
         else if(pass.matches(rs.getString(2))){
             Stage stage;
-            Parent root;
+            FXMLLoader root;
             stage=(Stage) signup.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("dashboard.fxml"));
-            Scene scene = new Scene(root, 1000,550);
+            root = new FXMLLoader(getClass().getResource("dashboard.fxml"));
+            Scene scene = new Scene((AnchorPane)root.load(), 1000,550);
             stage.setScene(scene);
+            //FXMLLoader loader = new FXMLLoader(getClass().getResource("dashboard.fxml"));
+            DashboardController controller = root.getController();
+            controller.initData(username.getText());
             stage.show();
         }
     }
     @FXML void signup() throws IOException{
         Stage stage;
-        Parent root;
+        FXMLLoader root;
         stage=(Stage) signup.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("signup_fxml.fxml"));
-        Scene scene = new Scene(root, 400,700);
+        root = new FXMLLoader(getClass().getResource("signup_fxml.fxml"));
+        Scene scene = new Scene((AnchorPane) root.load(), 400,700);
         stage.setScene(scene);
         stage.show();
     }

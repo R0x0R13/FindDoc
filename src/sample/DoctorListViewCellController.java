@@ -10,7 +10,7 @@ import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
 
-public class DoctorListViewCell extends ListCell<DoctorDetail> {
+public class DoctorListViewCellController extends ListCell<DoctorDetail> {
     @FXML
     Label name;
     @FXML Label type;
