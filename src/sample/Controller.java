@@ -39,9 +39,7 @@ public class Controller {
             Stage stage;
             Parent root;
             stage=(Stage) signup.getScene().getWindow();
-            //load up OTHER FXML document
             root = FXMLLoader.load(getClass().getResource("dashboard.fxml"));
-            //create a new scene with root and set the stage
             Scene scene = new Scene(root, 1000,550);
             stage.setScene(scene);
             stage.show();
@@ -50,11 +48,8 @@ public class Controller {
     @FXML void signup() throws IOException{
         Stage stage;
         Parent root;
-        //get reference to the button's stage
         stage=(Stage) signup.getScene().getWindow();
-        //load up OTHER FXML document
         root = FXMLLoader.load(getClass().getResource("signup_fxml.fxml"));
-        //create a new scene with root and set the stage
         Scene scene = new Scene(root, 400,700);
         stage.setScene(scene);
         stage.show();

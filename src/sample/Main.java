@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class Main extends Application {
 
@@ -18,7 +19,7 @@ public class Main extends Application {
     public void start(Stage signup_stage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         Scene signup_scene = new Scene(root, 700, 400);
-        signup_stage.setTitle("FindDoc");
+        signup_stage.initStyle(StageStyle.DECORATED);
         signup_stage.setScene(signup_scene);
         signup_stage.show();
     }

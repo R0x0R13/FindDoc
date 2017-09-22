@@ -21,18 +21,12 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class Dashboard implements Initializable{
-    @FXML
-    JFXButton signout;
-    @FXML
-    ListView<DoctorDetail> listView;
+    @FXML JFXButton signout;
+    @FXML ListView<DoctorDetail> listView;
     private ObservableList<DoctorDetail> doctorDetailObservableList;
 
     public Dashboard() throws SQLException {
         doctorDetailObservableList = FXCollections.observableArrayList();
-        /*doctorDetailObservableList.addAll(
-                new DoctorDetail("harshit", "dermatologist", "MBBS", 400,4,5),
-                new DoctorDetail("Akshit","Chutiya", "PhD",500,4,5)
-        );*/
         Connection connection = new ConnectDatabase().connectToDatabase();
         Statement stmt = connection.createStatement();
         ResultSet resultSet = stmt.executeQuery("select d.user_id, fname, lname, d_type, fee, education, doc_id " +

@@ -10,7 +10,7 @@ import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
 
-public class DoctorListViewCell extends JFXListCell<DoctorDetail> {
+public class DoctorListViewCell extends ListCell<DoctorDetail> {
     @FXML
     Label name;
     @FXML Label type;
@@ -19,6 +19,7 @@ public class DoctorListViewCell extends JFXListCell<DoctorDetail> {
     GridPane gridPane;
     @FXML Label fee;
     private FXMLLoader mLLoader;
+
     @Override
     public void updateItem(DoctorDetail doctorDetail, boolean empty) {
         super.updateItem(doctorDetail, empty);
