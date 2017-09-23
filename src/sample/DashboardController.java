@@ -1,6 +1,7 @@
 package sample;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -9,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -22,6 +24,8 @@ import java.util.ResourceBundle;
 public class DashboardController implements Initializable{
     @FXML JFXButton signout;
     @FXML ListView<DoctorDetail> listView;
+    @FXML JFXButton profile;
+    @FXML
     private UserProfile userProfile;
     private ObservableList<DoctorDetail> doctorDetailObservableList;
 
@@ -48,6 +52,19 @@ public class DashboardController implements Initializable{
         }
     }
 
+    public void showProfile() throws IOException {
+        Stage stage;
+        FXMLLoader root;
+        stage=(Stage) profile.getScene().getWindow();
+        root = new FXMLLoader(getClass().getResource("dashboard_profile.fxml"));
+        Scene scene = new Scene(root.load(), 1000,550);
+        stage.setScene(scene);
+        //FXMLLoader loader = new FXMLLoader(getClass().getResource("dashboard.fxml"));
+        DashboardProfileController controller = root.getController();
+        controller.initData(userProfile.getUser_id());
+        stage.show();
+    }
+
     public void signout() throws IOException {
         Stage stage;
         Parent root;
@@ -59,11 +76,12 @@ public class DashboardController implements Initializable{
         Scene scene = new Scene(root, 700,400);
         stage.setScene(scene);
         stage.show();
-
+        userProfile = null;
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         listView.setItems(doctorDetailObservableList);
         listView.setCellFactory(doctorDetailListView -> new DoctorListViewCellController());
     }
+
 }

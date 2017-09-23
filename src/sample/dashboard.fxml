@@ -24,7 +24,7 @@
                   <Image url="@image/test.png" />
                </image>
             </ImageView>
-            <JFXButton layoutY="178.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="188.0" text="profile" textFill="WHITE" />
+            <JFXButton fx:id="profile" layoutY="178.0" mnemonicParsing="false" onAction="#showProfile" prefHeight="31.0" prefWidth="188.0" text="profile" textFill="WHITE" />
             <ImageView fitHeight="29.0" fitWidth="30.0" layoutX="9.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@image/profile.png" />

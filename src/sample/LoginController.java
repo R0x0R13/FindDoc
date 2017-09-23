@@ -44,8 +44,7 @@ public class LoginController {
             root = new FXMLLoader(getClass().getResource("dashboard.fxml"));
             Scene scene = new Scene((AnchorPane)root.load(), 1000,550);
             stage.setScene(scene);
-            //FXMLLoader loader = new FXMLLoader(getClass().getResource("dashboard.fxml"));
-            DashboardController controller = root.getController();
+            DashboardController controller = root.<DashboardController>getController();
             controller.initData(username.getText());
             stage.show();
         }
