@@ -18,13 +18,13 @@
     <children>
         <AnchorPane prefHeight="549.0" prefWidth="188.0" style="-fx-background-color: #380000;">
             <children>
-                <JFXButton buttonType="RAISED" layoutY="116.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="188.0" text="search doctor" textFill="WHITE" />
+                <JFXButton buttonType="RAISED" layoutY="116.0" mnemonicParsing="false" onAction="#showSearchDoctor" prefHeight="31.0" prefWidth="188.0" text="search doctor" textFill="WHITE" />
                 <ImageView fitHeight="29.0" fitWidth="30.0" layoutX="9.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@image/search.png" />
                     </image>
                 </ImageView>
-                <JFXButton layoutY="147.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="188.0" text="book test" textFill="WHITE" />
+                <JFXButton layoutY="147.0" mnemonicParsing="false" onAction="#showSearchClinic" prefHeight="31.0" prefWidth="188.0" text="search clinic" textFill="WHITE" />
                 <ImageView fitHeight="29.0" fitWidth="30.0" layoutX="9.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@image/test.png" />

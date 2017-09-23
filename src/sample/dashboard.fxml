@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="549.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DashboardController">
+<AnchorPane prefHeight="549.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DashboardController">
    <children>
       <AnchorPane prefHeight="549.0" prefWidth="188.0" style="-fx-background-color: #380000;">
          <children>
@@ -18,7 +18,6 @@
                   <Image url="@image/search.png" />
                </image>
             </ImageView>
-            <JFXButton layoutY="147.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="188.0" text="book test" textFill="WHITE" />
             <ImageView fitHeight="29.0" fitWidth="30.0" layoutX="9.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@image/test.png" />
@@ -36,8 +35,9 @@
                   <Image url="@image/signout.png" />
                </image>
             </ImageView>
+            <JFXButton fx:id="searchClinic" buttonType="RAISED" layoutY="147.0" mnemonicParsing="false" onAction="#showSearchClinic" prefHeight="31.0" prefWidth="188.0" text="search clinic" textFill="WHITE" />
          </children></AnchorPane>
-      <AnchorPane layoutX="189.0" prefHeight="53.0" prefWidth="810.0" style="-fx-background-color: F0F0F5;">
+      <AnchorPane layoutX="189.0" prefHeight="53.0" prefWidth="668.0" style="-fx-background-color: F0F0F5;">
          <children>
             <Label layoutX="157.0" layoutY="12.0" prefHeight="29.0" prefWidth="208.0" text="Welcome to findDoc">
                <font>
@@ -45,9 +45,9 @@
                </font>
             </Label>
          </children></AnchorPane>
-      <AnchorPane layoutX="205.0" layoutY="107.0" prefHeight="419.0" prefWidth="768.0">
+      <AnchorPane layoutX="205.0" layoutY="107.0" prefHeight="419.0" prefWidth="652.0">
          <children>
-            <ListView fx:id="listView" prefHeight="419.0" prefWidth="768.0" />
+            <ListView fx:id="listView" prefHeight="419.0" prefWidth="650.0" />
          </children>
       </AnchorPane>
    </children>

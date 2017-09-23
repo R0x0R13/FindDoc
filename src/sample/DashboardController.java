@@ -25,7 +25,6 @@ public class DashboardController implements Initializable{
     @FXML JFXButton signout;
     @FXML ListView<DoctorDetail> listView;
     @FXML JFXButton profile;
-    @FXML
     private UserProfile userProfile;
     private ObservableList<DoctorDetail> doctorDetailObservableList;
 
@@ -37,6 +36,10 @@ public class DashboardController implements Initializable{
         userProfile = new UserProfile(rs.getInt(1));
         System.out.println("username passed: " + user_name);
         System.out.println("user_id Obtained" + userProfile.getUser_id());
+    }
+
+    void initData(UserProfile userProfile){
+        this.userProfile = userProfile;
     }
 
     public DashboardController() throws SQLException {
@@ -57,11 +60,24 @@ public class DashboardController implements Initializable{
         FXMLLoader root;
         stage=(Stage) profile.getScene().getWindow();
         root = new FXMLLoader(getClass().getResource("dashboard_profile.fxml"));
-        Scene scene = new Scene(root.load(), 1000,550);
+        Scene scene = new Scene(root.load(), 870,550);
         stage.setScene(scene);
         //FXMLLoader loader = new FXMLLoader(getClass().getResource("dashboard.fxml"));
         DashboardProfileController controller = root.getController();
-        controller.initData(userProfile.getUser_id());
+        controller.initData(userProfile);
+        stage.show();
+    }
+
+    public void showSearchClinic() throws IOException {
+        Stage stage;
+        FXMLLoader root;
+        stage=(Stage) profile.getScene().getWindow();
+        root = new FXMLLoader(getClass().getResource("dashboardSearchClinic.fxml"));
+        Scene scene = new Scene(root.load(), 870,550);
+        stage.setScene(scene);
+        //FXMLLoader loader = new FXMLLoader(getClass().getResource("dashboard.fxml"));
+        DashboardSearchClinicController controller = root.getController();
+        controller.initData(userProfile);
         stage.show();
     }
 
