@@ -1,13 +1,16 @@
 package sample;
 
 public class DoctorDetail {
+    UserProfile userProfile;
     private String name;
     private String type;
     private String spec;
     private int fee;
     private int doc_id, user_id;
-    public DoctorDetail(String name, String type, String spec , int fee, int doc_id, int user_id){
+
+    public DoctorDetail(UserProfile userProfile,String name, String type, String spec , int fee, int doc_id, int user_id){
         this.name = name;
+        this.userProfile = userProfile;
         this.type = type;
         this.spec = spec;
         this.fee = fee;

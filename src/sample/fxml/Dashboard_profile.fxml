@@ -64,6 +64,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -79,7 +80,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label text="Name :" GridPane.rowIndex="1">
+            <Label text="First name :" GridPane.rowIndex="1">
                <font>
                   <Font size="18.0" />
                </font>
@@ -88,7 +89,7 @@
                </GridPane.margin>
             </Label>
             <JFXTextField fx:id="name" focusColor="#ff3838" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label layoutX="10.0" layoutY="78.0" text="Date of Birth :" GridPane.rowIndex="2">
+            <Label layoutX="10.0" layoutY="78.0" text="Date of Birth :" GridPane.rowIndex="3">
                <font>
                   <Font size="18.0" />
                </font>
@@ -96,39 +97,45 @@
                   <Insets />
                </GridPane.margin>
             </Label>
-            <JFXDatePicker fx:id="dob" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label layoutX="10.0" layoutY="132.0" text="E-mail :" GridPane.rowIndex="3">
+            <JFXDatePicker fx:id="dob" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label layoutX="10.0" layoutY="132.0" text="E-mail :" GridPane.rowIndex="4">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="email" focusColor="#ff3838" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label layoutX="10.0" layoutY="186.0" text="Mobile :" GridPane.rowIndex="4">
+            <JFXTextField fx:id="email" focusColor="#ff3838" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label layoutX="10.0" layoutY="186.0" text="Mobile :" GridPane.rowIndex="5">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="mob" focusColor="#ff3838" layoutX="138.0" layoutY="185.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <JFXComboBox fx:id="bg" focusColor="#ff3838" prefHeight="31.0" prefWidth="169.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Label layoutX="10.0" layoutY="239.0" text="Blood Group :" GridPane.rowIndex="5">
+            <JFXTextField fx:id="mob" focusColor="#ff3838" layoutX="138.0" layoutY="185.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <JFXComboBox fx:id="bg" focusColor="#ff3838" prefHeight="31.0" prefWidth="169.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label layoutX="10.0" layoutY="239.0" text="Blood Group :" GridPane.rowIndex="6">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="10.0" layoutY="255.0" text="Gender :" GridPane.rowIndex="6">
+            <Label layoutX="10.0" layoutY="255.0" text="Gender :" GridPane.rowIndex="7">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <JFXComboBox fx:id="gender" focusColor="#ff3838" layoutX="138.0" layoutY="253.0" prefHeight="31.0" prefWidth="169.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <JFXButton mnemonicParsing="false" prefHeight="31.0" prefWidth="173.0" style="-fx-background-color: #ff3838;" text="Modify" textFill="#e0e0e0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+            <JFXComboBox fx:id="gender" focusColor="#ff3838" layoutX="138.0" layoutY="253.0" prefHeight="31.0" prefWidth="169.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <JFXButton mnemonicParsing="false" onAction="#modify" prefHeight="31.0" prefWidth="173.0" style="-fx-background-color: #ff3838;" text="Modify" textFill="#e0e0e0" GridPane.columnIndex="1" GridPane.rowIndex="9">
                <GridPane.margin>
                   <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                </GridPane.margin></JFXButton>
-            <JFXButton buttonType="RAISED" layoutX="138.0" layoutY="347.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="173.0" style="-fx-background-color: #ff3838;" text="Reset" textFill="#e0e0e0" GridPane.columnIndex="2" GridPane.rowIndex="8">
+            <JFXButton layoutX="138.0" layoutY="347.0" mnemonicParsing="false" onAction="#reset" prefHeight="31.0" prefWidth="173.0" style="-fx-background-color: #ff3838;" text="Reset" textFill="#e0e0e0" GridPane.columnIndex="2" GridPane.rowIndex="9">
                <GridPane.margin>
                   <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                </GridPane.margin></JFXButton>
+            <Label text="Last name :" GridPane.rowIndex="2">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="lastname" focusColor="#ff3838" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
     </children>

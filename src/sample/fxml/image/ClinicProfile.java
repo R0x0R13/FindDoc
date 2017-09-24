@@ -1,4 +1,4 @@
-package sample.image;
+package sample.fxml.image;
 
 import sample.ConnectDatabase;
 

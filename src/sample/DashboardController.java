@@ -1,7 +1,6 @@
 package sample;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,7 +9,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -49,7 +47,7 @@ public class DashboardController implements Initializable{
         ResultSet resultSet = stmt.executeQuery("select d.user_id, fname, lname, d_type, fee, education, doc_id " +
                 "from doctor_tbl as d, user_profile as u where d.user_id = u.user_id");
         while(resultSet.next()){
-            doctorDetailObservableList.add(new DoctorDetail(resultSet.getString(2) + " " + resultSet.getString(3),
+            doctorDetailObservableList.add(new DoctorDetail(userProfile,resultSet.getString(2) + " " + resultSet.getString(3),
                     resultSet.getString(4), resultSet.getString(6), resultSet.getInt(5), resultSet.getInt(7),
                     resultSet.getInt(1)));
         }
@@ -59,7 +57,7 @@ public class DashboardController implements Initializable{
         Stage stage;
         FXMLLoader root;
         stage=(Stage) profile.getScene().getWindow();
-        root = new FXMLLoader(getClass().getResource("dashboard_profile.fxml"));
+        root = new FXMLLoader(getClass().getResource("fxml/Dashboard_profile.fxml"));
         Scene scene = new Scene(root.load(), 870,550);
         stage.setScene(scene);
         //FXMLLoader loader = new FXMLLoader(getClass().getResource("dashboard.fxml"));
@@ -72,7 +70,7 @@ public class DashboardController implements Initializable{
         Stage stage;
         FXMLLoader root;
         stage=(Stage) profile.getScene().getWindow();
-        root = new FXMLLoader(getClass().getResource("dashboardSearchClinic.fxml"));
+        root = new FXMLLoader(getClass().getResource("fxml/DashboardSearchClinic.fxml"));
         Scene scene = new Scene(root.load(), 870,550);
         stage.setScene(scene);
         //FXMLLoader loader = new FXMLLoader(getClass().getResource("dashboard.fxml"));
@@ -84,11 +82,8 @@ public class DashboardController implements Initializable{
     public void signout() throws IOException {
         Stage stage;
         Parent root;
-        //get reference to the button's stage
         stage=(Stage) signout.getScene().getWindow();
-        //load up OTHER FXML document
-        root = FXMLLoader.load(getClass().getResource("login.fxml"));
-        //create a new scene with root and set the stage
+        root = FXMLLoader.load(getClass().getResource("fxml/login.fxml"));
         Scene scene = new Scene(root, 700,400);
         stage.setScene(scene);
         stage.show();

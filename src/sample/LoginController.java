@@ -5,11 +5,9 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -41,7 +39,7 @@ public class LoginController {
             Stage stage;
             FXMLLoader root;
             stage=(Stage) signup.getScene().getWindow();
-            root = new FXMLLoader(getClass().getResource("dashboard.fxml"));
+            root = new FXMLLoader(getClass().getResource("fxml/dashboard.fxml"));
             Scene scene = new Scene((AnchorPane)root.load(), 870,550);
             stage.setScene(scene);
             DashboardController controller = root.<DashboardController>getController();
@@ -53,7 +51,7 @@ public class LoginController {
         Stage stage;
         FXMLLoader root;
         stage=(Stage) signup.getScene().getWindow();
-        root = new FXMLLoader(getClass().getResource("signup_fxml.fxml"));
+        root = new FXMLLoader(getClass().getResource("fxml/signup_fxml.fxml"));
         Scene scene = new Scene((AnchorPane) root.load(), 400,700);
         stage.setScene(scene);
         stage.show();

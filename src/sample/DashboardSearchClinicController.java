@@ -12,7 +12,7 @@ import java.io.IOException;
 public class DashboardSearchClinicController {
     @FXML
     JFXButton signout;
-    UserProfile userProfile;
+    private UserProfile userProfile;
     public void initData(UserProfile userProfile){
         this.userProfile = userProfile;
     }
@@ -21,7 +21,7 @@ public class DashboardSearchClinicController {
         Stage stage;
         FXMLLoader root;
         stage=(Stage) signout.getScene().getWindow();
-        root = new FXMLLoader(getClass().getResource("dashboard_profile.fxml"));
+        root = new FXMLLoader(getClass().getResource("fxml/Dashboard_profile.fxml"));
         Scene scene = new Scene(root.load(), 870,550);
         stage.setScene(scene);
         DashboardProfileController controller = root.getController();
@@ -33,7 +33,7 @@ public class DashboardSearchClinicController {
         Stage stage;
         FXMLLoader root;
         stage=(Stage) signout.getScene().getWindow();
-        root = new FXMLLoader(getClass().getResource("dashboard.fxml"));
+        root = new FXMLLoader(getClass().getResource("fxml/dashboard.fxml"));
         Scene scene = new Scene(root.load(), 870,550);
         stage.setScene(scene);
         DashboardController controller = root.<DashboardController>getController();
@@ -47,7 +47,7 @@ public class DashboardSearchClinicController {
         //get reference to the button's stage
         stage=(Stage) signout.getScene().getWindow();
         //load up OTHER FXML document
-        root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        root = FXMLLoader.load(getClass().getResource("fxml/login.fxml"));
         //create a new scene with root and set the stage
         Scene scene = new Scene(root, 700,400);
         stage.setScene(scene);

@@ -69,4 +69,11 @@ public class UserProfile {
         return mob_no;
     }
 
+    public String getBlood_group() {
+        return blood_group;
+    }
+
+    public String getGender() {
+        return gender;
+    }
 }

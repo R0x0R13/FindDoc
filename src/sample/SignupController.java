@@ -65,7 +65,7 @@ public class SignupController {
         Stage stage;
         Parent root;
         stage=(Stage) backbtn.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        root = FXMLLoader.load(getClass().getResource("fxml/login.fxml"));
         Scene scene = new Scene(root, 700,400);
         stage.setScene(scene);
         stage.show();

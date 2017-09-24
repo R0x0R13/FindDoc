@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DashboardSearchClinicController">
+    <children>
+        <AnchorPane prefHeight="549.0" prefWidth="188.0" style="-fx-background-color: #380000;">
+            <children>
+                <JFXButton buttonType="RAISED" layoutY="116.0" mnemonicParsing="false" onAction="#showSearchDoctor" prefHeight="31.0" prefWidth="188.0" text="search doctor" textFill="WHITE" />
+                <ImageView fitHeight="29.0" fitWidth="30.0" layoutX="9.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@image/search.png" />
+                    </image>
+                </ImageView>
+                <JFXButton fx:id="profile" layoutY="178.0" mnemonicParsing="false" onAction="#showProfile" prefHeight="31.0" prefWidth="188.0" text="profile" textFill="WHITE" />
+                <ImageView fitHeight="29.0" fitWidth="30.0" layoutX="9.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@image/profile.png" />
+                    </image>
+                </ImageView>
+                <JFXButton fx:id="signout" layoutY="209.0" mnemonicParsing="false" onAction="#signout" prefHeight="31.0" prefWidth="188.0" text="signout" textFill="WHITE" />
+                <ImageView fitHeight="29.0" fitWidth="30.0" layoutX="9.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@image/signout.png" />
+                    </image>
+                </ImageView>
+                <JFXButton fx:id="searchClinic" buttonType="RAISED" layoutY="147.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="188.0" style="-fx-background-color: #b50000;" text="search clinic" textFill="WHITE" />
+                <ImageView fitHeight="29.0" fitWidth="30.0" layoutX="9.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@image/test.png" />
+                    </image>
+                </ImageView>
+            </children></AnchorPane>
+        <AnchorPane layoutX="189.0" prefHeight="53.0" prefWidth="668.0" style="-fx-background-color: F0F0F5;">
+            <children>
+                <Label layoutX="157.0" layoutY="12.0" prefHeight="29.0" prefWidth="208.0" text="Welcome to findDoc">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+            </children></AnchorPane>
+        <AnchorPane layoutX="205.0" layoutY="107.0" prefHeight="419.0" prefWidth="652.0">
+            <children>
+                <ListView fx:id="listView" prefHeight="419.0" prefWidth="650.0" />
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>
