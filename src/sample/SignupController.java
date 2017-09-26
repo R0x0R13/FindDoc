@@ -50,7 +50,7 @@ public class SignupController implements Initializable{
                 Statement statement = con.createStatement();
                 ResultSet rs = statement.executeQuery("select user_name from login_tbl where user_name = '" + usr_name + "'");
                 if (!rs.next() && pass1.equals(pass2)) {
-                    statement.executeUpdate("insert into login_tbl(user_name, password, acc_type)values('" + usr_name + "','" + pass1 + "','C')");
+                    statement.executeUpdate("insert into login_tbl(user_name, password, acc_type)values('" + usr_name + "','" + pass1 + "','P')");
                     System.out.println("Inserted into login_tbl");
                     rs = statement.executeQuery("select user_id from login_tbl where user_name = '" + usr_name + "'");
                     rs.next();
@@ -91,7 +91,7 @@ public class SignupController implements Initializable{
         UserProfile userProfile;
         userProfile = new UserProfile(0, first_name.getText(), last_name.getText(), dob_date_picker.getValue().toString(),
                 emailid.getText(), mob_no.getText(), null, null);
-        LoginProfile loginProfile = new LoginProfile(user_name.getText(), password1.getText(), 'P');
+        LoginProfile loginProfile = new LoginProfile(user_name.getText(), password1.getText(), "P");
             Stage stage;
             FXMLLoader root;
             stage=(Stage) user_name.getScene().getWindow();

@@ -48,6 +48,7 @@
       <AnchorPane layoutX="205.0" layoutY="107.0" prefHeight="419.0" prefWidth="652.0">
          <children>
             <ListView fx:id="listView" prefHeight="419.0" prefWidth="650.0" />
+            <ListView fx:id="appList" prefHeight="419.0" prefWidth="650.0" />
          </children>
       </AnchorPane>
    </children>

@@ -2,6 +2,7 @@ package sample;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -29,6 +30,7 @@ public class DashboardAppointmentDoctor{
     public Label doc_name;
     public JFXComboBox<String> time;
     public JFXTextArea symptoms;
+    public JFXDatePicker date;
     private DoctorDetail doctorDetail;
     public JFXComboBox<String> clinics;
     ObservableList<ClinicDetail> clinicList;
@@ -146,8 +148,8 @@ public class DashboardAppointmentDoctor{
         f = f.plusMinutes(15 * timeIndex);
         con = new ConnectDatabase().connectToDatabase();
         Statement stmt = con.createStatement();
-        stmt.executeUpdate("insert into appointment_tbl(hoc_id, doc_id, category,timeslot,user_id) values" +
-                "("+ clinic_id + ", " + doctorDetail.getDoc_id() + ", '" + symptoms.getText() + "', '" + f.toString() + "'," + doctorDetail.getCaller_id() + ")");
+        stmt.executeUpdate("insert into appointment_tbl(hoc_id, doc_id, category,timeslot,user_id,date_app) values" +
+                "("+ clinic_id + ", " + doctorDetail.getDoc_id() + ", '" + symptoms.getText() + "', '" + f.toString() + "'," + doctorDetail.getCaller_id() + ",'" + date.getValue().toString() + "')");
 
     }
 }

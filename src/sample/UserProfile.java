@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class UserProfile {
+    public LoginProfile loginProfile;
     private String first_name;
     private String last_name;
     private String dob;

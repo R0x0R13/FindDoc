@@ -52,15 +52,16 @@ public class SignupClinic implements Initializable {
     public void signup(ActionEvent actionEvent) throws SQLException {
         Connection con = new ConnectDatabase().connectToDatabase();
         Statement stmt = con.createStatement();
-        stmt.executeUpdate("insert into login_tbl(user_name, password, acc_type) values('" + loginProfile.getUser_name() + "', '" + loginProfile.getPassword() + "', '" + loginProfile.getAcc_type() + "')");
+        stmt.executeUpdate("insert into login_tbl(user_name, password, acc_type) values('" + loginProfile.getUser_name() + "', '" + loginProfile.getPassword() + "', 'C')");
         ResultSet rs = stmt.executeQuery("select user_id from login_tbl where user_name = '" + loginProfile.getUser_name() + "'");
+        rs.next();
         userProfile.setUser_id(rs.getInt(1));
         stmt.executeUpdate("insert into user_profile values(" + userProfile.getUser_id() + ", '" + userProfile.getFirst_name() + "','" + userProfile.getLast_name() +
                 "','" + userProfile.getDob() + "','" + userProfile.getEmail() + "','" + userProfile.getMob_no() +
                 "', null , null)");
         stmt.executeUpdate("insert into hoc_tbl(hoc_name, addr_state, addr_city, addr_pin, addr_line, ph_no, email, user_id) values('" +
         clinic_name.getText() + "', '" + state_cb.getSelectionModel().getSelectedItem() + "', '" + clinic_city.getText() + "'," + clinic_pin.getText() +
-        ", '" + clinic_line.getText() + "', '" + mob_no.getText() + "', '" + emailid.getText() + "', " + userProfile.getUser_id());
+        ", '" + clinic_line.getText() + "', '" + mob_no.getText() + "', '" + emailid.getText() + "', " + userProfile.getUser_id() + ")");
         System.out.println("Clinic Account Created");
 
     }

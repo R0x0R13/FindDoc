@@ -30,7 +30,7 @@ public class LoginController {
         Connection con = new ConnectDatabase().connectToDatabase();
         System.out.println("Connected");
         Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("select user_name, password from login_tbl where user_name = '" + usrname +"'");
+        ResultSet rs = stmt.executeQuery("select user_name, password, acc_type from login_tbl where user_name = '" + usrname +"'");
         if(!rs.next())
         {
             error.setText("User does not exist!");
@@ -40,10 +40,10 @@ public class LoginController {
             FXMLLoader root;
             stage=(Stage) signup.getScene().getWindow();
             root = new FXMLLoader(getClass().getResource("fxml/dashboard.fxml"));
-            Scene scene = new Scene((AnchorPane)root.load(), 870,550);
+            Scene scene = new Scene(root.load(), 870,550);
             stage.setScene(scene);
             DashboardController controller = root.<DashboardController>getController();
-            controller.initData(username.getText());
+            controller.initData(new LoginProfile(username.getText(), password.getText(), rs.getString(3)));
             stage.show();
         }
     }
