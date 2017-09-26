@@ -76,4 +76,8 @@ public class UserProfile {
     public String getGender() {
         return gender;
     }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
 }

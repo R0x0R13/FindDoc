@@ -11,6 +11,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class DoctorListViewCellController extends ListCell<DoctorDetail> {
     @FXML Label name;
@@ -22,6 +23,7 @@ public class DoctorListViewCellController extends ListCell<DoctorDetail> {
     @FXML JFXButton appointment;
     private FXMLLoader mLLoader;
     DoctorDetail doctorDetail;
+    int currentIndex = -1;
     @Override
     public void updateItem(DoctorDetail doctorDetail, boolean empty) {
         super.updateItem(doctorDetail, empty);
@@ -32,6 +34,9 @@ public class DoctorListViewCellController extends ListCell<DoctorDetail> {
             setGraphic(null);
 
         } else {
+            int index = getIndex();
+            if(currentIndex == index) return;
+            currentIndex = index;
             if (mLLoader == null) {
                 mLLoader = new FXMLLoader(getClass().getResource("fxml/doctor_listcell.fxml"));
                 mLLoader.setController(this);
@@ -47,20 +52,30 @@ public class DoctorListViewCellController extends ListCell<DoctorDetail> {
             type.setText(doctorDetail.getType());
             spec.setText(doctorDetail.getSpec());
             fee.setText(String.valueOf(doctorDetail.getFee()));
+            appointment.setOnAction(event -> bookAppointment());
             setText(null);
             setGraphic(gridPane);
         }
 
     }
-    public void bookAppointment() throws IOException {
+    @FXML public void bookAppointment()  {
+        doctorDetail = getItem();
         Stage stage;
         FXMLLoader root;
+        System.out.println(appointment.getScene().getWindow().getWidth());
         stage=(Stage) appointment.getScene().getWindow();
         root = new FXMLLoader(getClass().getResource("fxml/book_appointment_doctor.fxml"));
-        Scene scene = new Scene((AnchorPane)root.load(), 870,550);
-        stage.setScene(scene);
-        DashboardAppointmentDoctor controller = root.getController();
-        controller.initData(doctorDetail);
-        stage.show();
+        Scene scene;
+        try {
+            scene = new Scene(root.load(), 870,550);
+            stage.setScene(scene);
+            DashboardAppointmentDoctor controller = root.getController();
+            controller.initData(doctorDetail);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

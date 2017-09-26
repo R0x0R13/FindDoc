@@ -3,17 +3,21 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="629.0" prefWidth="419.0" style="-fx-background-color: #380000;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SignupController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="687.0" prefWidth="424.0" style="-fx-background-color: #380000;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SignupController">
    <children>
-      <AnchorPane layoutX="40.0" layoutY="35.0" prefHeight="560.0" prefWidth="340.0" style="-fx-background-color: #b50000;">
+      <AnchorPane layoutX="42.0" layoutY="59.0" prefHeight="587.0" prefWidth="340.0" style="-fx-background-color: #b50000;">
          <children>
+             <fx:define>
+                 <ToggleGroup fx:id="toggleGroup1" /></fx:define>
             <JFXTextField fx:id="first_name" focusColor="#e5e0e0" layoutX="23.0" layoutY="94.0" prefHeight="29.0" prefWidth="134.0" promptText="First name" style="-fx-prompt-text-fill: #e5e0e0; -fx-text-fill: #e5e0e0;" unFocusColor="#e5e0e0" />
             <JFXTextField fx:id="last_name" focusColor="#e5e0e0" layoutX="184.0" layoutY="94.0" prefHeight="29.0" prefWidth="134.0" promptText="Last name" style="-fx-prompt-text-fill: #e5e0e0; -fx-text-fill: #e5e0e0;" unFocusColor="#e5e0e0" />
             <JFXTextField fx:id="user_name" focusColor="#e5e0e0" layoutX="23.0" layoutY="151.0" prefHeight="29.0" prefWidth="295.0" promptText="Pick username" style="-fx-prompt-text-fill: #e5e0e0; -fx-text-fill: #e5e0e0;" unFocusColor="#e5e0e0" />
@@ -27,8 +31,13 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <JFXButton layoutX="53.0" layoutY="495.0" mnemonicParsing="false" onAction="#signup" prefHeight="31.0" prefWidth="104.0" style="-fx-background-color: #ff3838;" text="Submit" textFill="#e5e0e0" />
-            <JFXButton layoutX="177.0" layoutY="495.0" mnemonicParsing="false" onAction="#reset" prefHeight="31.0" prefWidth="104.0" style="-fx-background-color: #ff3838;" text="Reset" textFill="#e5e0e0" />
+            <JFXButton layoutX="50.0" layoutY="529.0" mnemonicParsing="false" onAction="#signup" prefHeight="31.0" prefWidth="104.0" style="-fx-background-color: #ff3838;" text="Submit" textFill="#e5e0e0" />
+            <JFXButton layoutX="171.0" layoutY="529.0" mnemonicParsing="false" onAction="#reset" prefHeight="31.0" prefWidth="104.0" style="-fx-background-color: #ff3838;" text="Reset" textFill="#e5e0e0" />
+            <JFXRadioButton fx:id="patient" layoutX="14.0" layoutY="494.0" mnemonicParsing="false" style="-jfx-unselected-color: #e5e5e5;" text="Patient" textFill="#e5e5e5">
+               <toggleGroup>
+                  <ToggleGroup fx:id="toggleGroup1" />
+               </toggleGroup></JFXRadioButton>
+            <JFXRadioButton layoutX="170.0" layoutY="494.0" mnemonicParsing="false" onAction="#getClinicDetails" style="-jfx-unselected-color: #e5e5e5;" text="Clinic" textFill="#e5e5e5" toggleGroup="$toggleGroup1" />
          </children>
       </AnchorPane>
       <ImageView fx:id="backbtn" fitHeight="59.0" fitWidth="79.0" layoutX="-6.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">

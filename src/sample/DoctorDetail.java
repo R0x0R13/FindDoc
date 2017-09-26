@@ -7,8 +7,9 @@ public class DoctorDetail {
     private String spec;
     private int fee;
     private int doc_id, user_id;
+    int caller_id;
 
-    public DoctorDetail(UserProfile userProfile,String name, String type, String spec , int fee, int doc_id, int user_id){
+    public DoctorDetail(UserProfile userProfile,String name, String type, String spec , int fee, int doc_id, int user_id, int caller_id){
         this.name = name;
         this.userProfile = userProfile;
         this.type = type;
@@ -16,6 +17,11 @@ public class DoctorDetail {
         this.fee = fee;
         this.doc_id = doc_id;
         this.user_id = user_id;
+        this.caller_id = caller_id;
+    }
+
+    public int getCaller_id() {
+        return caller_id;
     }
 
     public String getName() {

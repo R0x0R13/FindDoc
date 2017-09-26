@@ -58,7 +58,7 @@ public class DashboardProfileController {
         bg.setPromptText(userProfile.getBlood_group());
         gender.setPromptText(userProfile.getGender());
     }
-    public void showSearchDoctor() throws IOException {
+    public void showSearchDoctor() throws IOException, SQLException {
         Stage stage;
         FXMLLoader root;
         stage=(Stage) signout.getScene().getWindow();

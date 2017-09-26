@@ -36,12 +36,8 @@ public class DashboardController implements Initializable{
         System.out.println("user_id Obtained" + userProfile.getUser_id());
     }
 
-    void initData(UserProfile userProfile){
+    void initData(UserProfile userProfile) throws SQLException {
         this.userProfile = userProfile;
-    }
-
-    public DashboardController() throws SQLException {
-        doctorDetailObservableList = FXCollections.observableArrayList();
         Connection connection = new ConnectDatabase().connectToDatabase();
         Statement stmt = connection.createStatement();
         ResultSet resultSet = stmt.executeQuery("select d.user_id, fname, lname, d_type, fee, education, doc_id " +
@@ -49,8 +45,12 @@ public class DashboardController implements Initializable{
         while(resultSet.next()){
             doctorDetailObservableList.add(new DoctorDetail(userProfile,resultSet.getString(2) + " " + resultSet.getString(3),
                     resultSet.getString(4), resultSet.getString(6), resultSet.getInt(5), resultSet.getInt(7),
-                    resultSet.getInt(1)));
+                    resultSet.getInt(1), userProfile.getUser_id()));
         }
+    }
+
+    public DashboardController() throws SQLException {
+        doctorDetailObservableList = FXCollections.observableArrayList();
     }
 
     public void showProfile() throws IOException {

@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class DashboardSearchClinicController {
     @FXML
@@ -29,14 +30,14 @@ public class DashboardSearchClinicController {
         stage.show();
     }
 
-    public void showSearchDoctor() throws IOException {
+    public void showSearchDoctor() throws IOException, SQLException {
         Stage stage;
         FXMLLoader root;
         stage=(Stage) signout.getScene().getWindow();
         root = new FXMLLoader(getClass().getResource("fxml/dashboard.fxml"));
         Scene scene = new Scene(root.load(), 870,550);
         stage.setScene(scene);
-        DashboardController controller = root.<DashboardController>getController();
+        DashboardController controller = root.getController();
         controller.initData(userProfile);
         stage.show();
     }
@@ -44,11 +45,8 @@ public class DashboardSearchClinicController {
     public void signout() throws IOException {
         Stage stage;
         Parent root;
-        //get reference to the button's stage
         stage=(Stage) signout.getScene().getWindow();
-        //load up OTHER FXML document
         root = FXMLLoader.load(getClass().getResource("fxml/login.fxml"));
-        //create a new scene with root and set the stage
         Scene scene = new Scene(root, 700,400);
         stage.setScene(scene);
         stage.show();
