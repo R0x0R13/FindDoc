@@ -22,19 +22,31 @@ import java.util.ResourceBundle;
 /**
  * Created by harshit on 10-09-2017.
  */
-public class SignupController implements Initializable{
-    @FXML private JFXTextField user_name;
-    @FXML private JFXTextField last_name;
-    @FXML private JFXPasswordField password2;
-    @FXML private JFXTextField emailid;
-    @FXML private JFXTextField mob_no;
-    @FXML private JFXPasswordField password1;
-    @FXML private JFXDatePicker dob_date_picker;
-    @FXML private JFXTextField first_name;
-    @FXML private ImageView backbtn;
-    @FXML private JFXRadioButton patient;
-    @FXML void signup(ActionEvent event) {
-        if(patient.isSelected()) {
+public class SignupController implements Initializable {
+    @FXML
+    private JFXTextField user_name;
+    @FXML
+    private JFXTextField last_name;
+    @FXML
+    private JFXPasswordField password2;
+    @FXML
+    private JFXTextField emailid;
+    @FXML
+    private JFXTextField mob_no;
+    @FXML
+    private JFXPasswordField password1;
+    @FXML
+    private JFXDatePicker dob_date_picker;
+    @FXML
+    private JFXTextField first_name;
+    @FXML
+    private ImageView backbtn;
+    @FXML
+    private JFXRadioButton patient;
+
+    @FXML
+    void signup(ActionEvent event) {
+        if (patient.isSelected()) {
             Connection con = new ConnectDatabase().connectToDatabase();
             String usr_name = user_name.getText();
             String fname = first_name.getText();
@@ -66,16 +78,20 @@ public class SignupController implements Initializable{
             }
         }
     }
-    @FXML void back() throws IOException {
+
+    @FXML
+    void back() throws IOException {
         Stage stage;
         Parent root;
-        stage=(Stage) backbtn.getScene().getWindow();
+        stage = (Stage) backbtn.getScene().getWindow();
         root = FXMLLoader.load(getClass().getResource("fxml/login.fxml"));
-        Scene scene = new Scene(root, 700,400);
+        Scene scene = new Scene(root, 700, 400);
         stage.setScene(scene);
         stage.show();
     }
-    @FXML void reset() {
+
+    @FXML
+    void reset() {
         user_name.clear();
         first_name.clear();
         last_name.clear();
@@ -86,17 +102,18 @@ public class SignupController implements Initializable{
         dob_date_picker.getEditor().clear();
     }
 
-    @FXML void getClinicDetails() throws IOException {
-        if(password1.getText().equals(password2.getText())){
-        UserProfile userProfile;
-        userProfile = new UserProfile(0, first_name.getText(), last_name.getText(), dob_date_picker.getValue().toString(),
-                emailid.getText(), mob_no.getText(), null, null);
-        LoginProfile loginProfile = new LoginProfile(user_name.getText(), password1.getText(), "P");
+    @FXML
+    void getClinicDetails() throws IOException {
+        if (password1.getText().equals(password2.getText())) {
+            UserProfile userProfile;
+            userProfile = new UserProfile(0, first_name.getText(), last_name.getText(), dob_date_picker.getValue().toString(),
+                    emailid.getText(), mob_no.getText(), null, null);
+            LoginProfile loginProfile = new LoginProfile(user_name.getText(), password1.getText(), "P");
             Stage stage;
             FXMLLoader root;
-            stage=(Stage) user_name.getScene().getWindow();
+            stage = (Stage) user_name.getScene().getWindow();
             root = new FXMLLoader(getClass().getResource("fxml/signup_clinic.fxml"));
-            Scene scene = new Scene(root.load(), 870,550);
+            Scene scene = new Scene(root.load(), 870, 550);
             stage.setScene(scene);
             SignupClinic controller = root.getController();
             controller.initData(userProfile, loginProfile);
@@ -108,5 +125,11 @@ public class SignupController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         dob_date_picker.getEditor().setStyle("-fx-text-fill:#e5e5e5; -fx-prompt-text-fill:#e5e5e5");
         patient.setSelected(true);
+        {
+            user_name.focusedProperty().addListener(((observable, oldValue, newValue) -> {
+                if (!newValue.toString().matches("[a-zA-Z]+[0-9]*"))
+                    System.out.println("it does not match");
+            }));
+        }
     }
 }

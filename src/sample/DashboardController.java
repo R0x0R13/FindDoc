@@ -9,6 +9,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,6 +22,13 @@ import java.util.ResourceBundle;
 
 public class DashboardController implements Initializable{
     public ListView<AppointmentDetail> appList;
+    public TableView<AppointmentDetail> app_tbl;
+    public TableColumn t_date;
+    public TableColumn t_time;
+    public TableColumn t_doc;
+    public TableColumn t_patient;
+    public TableColumn t_symptom;
+    public TableColumn t_fee;
     @FXML JFXButton signout;
     @FXML ListView<DoctorDetail> listView;
     @FXML JFXButton profile;
@@ -92,7 +101,8 @@ public class DashboardController implements Initializable{
     void setChanges() throws SQLException {
         if(userProfile.loginProfile.getAcc_type().equals("P"))
         {
-            appList.setVisible(false);
+            //appList.setVisible(false);
+            app_tbl.setVisible(false);
             Connection connection = new ConnectDatabase().connectToDatabase();
             Statement stmt = connection.createStatement();
             ResultSet resultSet = stmt.executeQuery("select d.user_id, doc_name, fname, d_type, fee, education, doc_id " +
@@ -131,8 +141,9 @@ public class DashboardController implements Initializable{
                 System.out.println("1st Trace");
             }
 
-            appList.setItems(appointmentDetailObservableList);
-            appList.setCellFactory(appointmentDetailListView -> new AppointmentDetailListCell());
+            //appList.setItems(appointmentDetailObservableList);
+            //appList.setCellFactory(appointmentDetailListView -> new AppointmentDetailListCell());
+            app_tbl.setItems(appointmentDetailObservableList);
         }
     }
 }
