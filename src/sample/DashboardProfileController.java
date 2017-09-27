@@ -10,13 +10,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
-import java.sql.Connection;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 
 public class DashboardProfileController {
     private UserProfile userProfile;
@@ -69,7 +68,7 @@ public class DashboardProfileController {
         controller.initData(userProfile);
         stage.show();
     }
-    public void showSearchClinic() throws IOException {
+    public void showSearchClinic() throws IOException, SQLException {
         Stage stage;
         FXMLLoader root;
         stage=(Stage) signout.getScene().getWindow();
@@ -77,7 +76,7 @@ public class DashboardProfileController {
         Scene scene = new Scene(root.load(), 870,550);
         stage.setScene(scene);
         //FXMLLoader loader = new FXMLLoader(getClass().getResource("dashboard.fxml"));
-        DashboardSearchClinicController controller = root.getController();
+        DashboardYourAppointment controller = root.getController();
         controller.initData(userProfile);
         stage.show();
     }

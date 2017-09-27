@@ -14,8 +14,11 @@ import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.*;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ResourceBundle;
@@ -70,7 +73,7 @@ public class DashboardController implements Initializable{
         stage.show();
     }
 
-    public void showSearchClinic() throws IOException {
+    public void showSearchClinic() throws IOException, SQLException {
         Stage stage;
         FXMLLoader root;
         stage=(Stage) profile.getScene().getWindow();
@@ -78,7 +81,7 @@ public class DashboardController implements Initializable{
         Scene scene = new Scene(root.load(), 870,550);
         stage.setScene(scene);
         //FXMLLoader loader = new FXMLLoader(getClass().getResource("dashboard.fxml"));
-        DashboardSearchClinicController controller = root.getController();
+        DashboardYourAppointment controller = root.getController();
         controller.initData(userProfile);
         stage.show();
     }
@@ -117,6 +120,7 @@ public class DashboardController implements Initializable{
         }
         else if(userProfile.loginProfile.getAcc_type().equals("C")){
             listView.setVisible(false);
+
             Connection con = new ConnectDatabase().connectToDatabase();
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("select * from appointment_tbl where hoc_id in (select hoc_id from hoc_tbl where user_id = " + userProfile.getUser_id() + ")");
@@ -140,7 +144,6 @@ public class DashboardController implements Initializable{
                 appointmentDetailObservableList.add(new AppointmentDetail(doc_name, patient_name, d,t , rs_d.getInt(2),symptom));
                 System.out.println("1st Trace");
             }
-
             //appList.setItems(appointmentDetailObservableList);
             //appList.setCellFactory(appointmentDetailListView -> new AppointmentDetailListCell());
             app_tbl.setItems(appointmentDetailObservableList);

@@ -49,24 +49,6 @@ public class ClinicDetail {
             this.user_id = rs.getInt(10);
         }
     }
-    public void getDetailByUserID(int user_id) throws SQLException {
-
-        Connection con = new ConnectDatabase().connectToDatabase();
-        Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("Select * from hoc_tbl where user_id = " + id);
-        while(rs.next()) {
-            this.id = rs.getInt(1);
-            this.name = rs.getString(2);
-            this.addr_state = rs.getString(3);
-            this.addr_city = rs.getString(4);
-            this.addr_pin = rs.getInt(5);
-            this.addr_line = rs.getString(6);
-            this.ph_no = rs.getString(7);
-            this.email = rs.getString(8);
-            this.website = rs.getString(9);
-            this.user_id = rs.getInt(10);
-        }
-    }
     public String getAddress(){
         return addr_line + ", " + addr_city + ", " + addr_state + ", " + addr_pin;
     }

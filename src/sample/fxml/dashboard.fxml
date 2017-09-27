@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
-<?import javafx.scene.control.cell.PropertyValueFactory?>
 <AnchorPane prefHeight="549.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DashboardController">
    <children>
       <AnchorPane prefHeight="549.0" prefWidth="188.0" style="-fx-background-color: #380000;">
@@ -53,13 +48,12 @@
             <ListView fx:id="listView" prefHeight="419.0" prefWidth="650.0" />
             <TableView fx:id="app_tbl" layoutX="1.0" prefHeight="419.0" prefWidth="650.0">
               <columns>
-                  <TableColumn fx:id="t_date" prefWidth="77.0" text="Date"><cellValueFactory><PropertyValueFactory property="date"/>  </cellValueFactory> </TableColumn>
-                <TableColumn fx:id="t_time" prefWidth="61.0" text="Time"><cellValueFactory><PropertyValueFactory property="time"/>  </cellValueFactory></TableColumn>
-                <TableColumn fx:id="t_doc" prefWidth="137.0" text="Doctor"><cellValueFactory><PropertyValueFactory property="doc_name"/>  </cellValueFactory></TableColumn>
-                <TableColumn fx:id="t_patient" prefWidth="143.0" text="Patient"><cellValueFactory><PropertyValueFactory property="patient_name"/>  </cellValueFactory></TableColumn>
-                <TableColumn fx:id="t_symptom" prefWidth="170.0" text="Symptoms"><cellValueFactory><PropertyValueFactory property="symptom"/>  </cellValueFactory></TableColumn>
-                <TableColumn fx:id="t_fee" prefWidth="56.0" text="Fee"><cellValueFactory><PropertyValueFactory property="fee"/>  </cellValueFactory></TableColumn>
-
+                  <TableColumn fx:id="t_date" prefWidth="90.0" text="Date"><cellValueFactory><PropertyValueFactory property="date" />  </cellValueFactory> </TableColumn>
+                <TableColumn fx:id="t_time" prefWidth="60.0" text="Time"><cellValueFactory><PropertyValueFactory property="time" />  </cellValueFactory></TableColumn>
+                <TableColumn fx:id="t_doc" prefWidth="137.0" text="Doctor"><cellValueFactory><PropertyValueFactory property="doc_name" />  </cellValueFactory></TableColumn>
+                <TableColumn fx:id="t_patient" prefWidth="143.0" text="Patient"><cellValueFactory><PropertyValueFactory property="patient_name" />  </cellValueFactory></TableColumn>
+                <TableColumn fx:id="t_symptom" prefWidth="170.0" text="Symptoms"><cellValueFactory><PropertyValueFactory property="symptom" />  </cellValueFactory></TableColumn>
+                <TableColumn fx:id="t_fee" prefWidth="56.0" text="Fee"><cellValueFactory><PropertyValueFactory property="fee" />  </cellValueFactory></TableColumn>
               </columns>
             </TableView>
             <!--<ListView fx:id="appList" prefHeight="419.0" prefWidth="650.0" />-->

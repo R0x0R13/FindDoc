@@ -1,21 +1,46 @@
 package sample;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
-public class DashboardSearchClinicController {
+public class DashboardYourAppointment {
+    public ListView<AppointmentDetailUser> listView;
+
     @FXML
     JFXButton signout;
+    ObservableList<AppointmentDetailUser> appointmentDetailObservableList;
     private UserProfile userProfile;
-    public void initData(UserProfile userProfile){
+    public void initData(UserProfile userProfile) throws SQLException {
         this.userProfile = userProfile;
+        Connection connection = new ConnectDatabase().connectToDatabase();
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery("select * from appointment_tbl where user_id = " + userProfile.getUser_id());
+        while(rs.next()){
+            ClinicDetail clinicDetail = new ClinicDetail(rs.getInt(2));
+            DoctorDetail doctorDetail = new DoctorDetail(rs.getInt(3));
+            AppointmentDetail appointmentDetail = new AppointmentDetail(doctorDetail.getName(),userProfile.getFirst_name() + userProfile.getLast_name(),
+            rs.getDate(7).toLocalDate(), rs.getTime(5).toLocalTime(),doctorDetail.getFee(),rs.getString(4));
+            appointmentDetailObservableList.add(new AppointmentDetailUser(clinicDetail,appointmentDetail,doctorDetail,rs.getInt(1)));
+        }
+        listView.setItems(appointmentDetailObservableList);
+        listView.setCellFactory(appointmentDetailUserListView-> new AppointmentDetailUserListcell());
+    }
+
+    public DashboardYourAppointment(){
+        appointmentDetailObservableList = FXCollections.observableArrayList();
     }
 
     public void showProfile() throws IOException {

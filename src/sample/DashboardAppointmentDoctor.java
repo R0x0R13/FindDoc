@@ -7,20 +7,15 @@ import com.jfoenix.controls.JFXTextArea;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.net.URL;
-import java.sql.*;
 import java.io.IOException;
+import java.sql.*;
 import java.time.LocalTime;
-import java.util.ResourceBundle;
 
 public class DashboardAppointmentDoctor{
     public JFXButton profile;
@@ -33,6 +28,7 @@ public class DashboardAppointmentDoctor{
     public JFXDatePicker date;
     private DoctorDetail doctorDetail;
     public JFXComboBox<String> clinics;
+    UserProfile userProfile;
     ObservableList<ClinicDetail> clinicList;
     ObservableList<String> clinicComboBox;
     ObservableList<String> timeslotList;
@@ -46,6 +42,7 @@ public class DashboardAppointmentDoctor{
     int clinic_id;
     public void initData(DoctorDetail doctorDetail) throws SQLException {
         this.doctorDetail = doctorDetail;
+        this.userProfile = doctorDetail.userProfile;
         this.doctorDetail.userProfile = new UserProfile(doctorDetail.getUser_id());
         int clinicListIndex = 0;
         fee.setText(String.valueOf(doctorDetail.getFee()));
@@ -78,7 +75,7 @@ public class DashboardAppointmentDoctor{
         stage.setScene(scene);
         DashboardController controller = root.getController();
         try {
-            controller.initData(doctorDetail.userProfile);
+            controller.initData(userProfile);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -93,11 +90,11 @@ public class DashboardAppointmentDoctor{
         Scene scene = new Scene(root.load(), 870,550);
         stage.setScene(scene);
         DashboardProfileController controller = root.getController();
-        controller.initData(doctorDetail.userProfile);
+        controller.initData(userProfile);
         stage.show();
     }
 
-    public void showSearchClinic() throws IOException {
+    public void showSearchClinic() throws IOException, SQLException {
         Stage stage;
         FXMLLoader root;
         stage=(Stage) signout.getScene().getWindow();
@@ -105,8 +102,8 @@ public class DashboardAppointmentDoctor{
         Scene scene = new Scene(root.load(), 870,550);
         stage.setScene(scene);
         //FXMLLoader loader = new FXMLLoader(getClass().getResource("dashboard.fxml"));
-        DashboardSearchClinicController controller = root.getController();
-        controller.initData(doctorDetail.userProfile);
+        DashboardYourAppointment controller = root.getController();
+        controller.initData(userProfile);
         stage.show();
     }
 
@@ -120,6 +117,7 @@ public class DashboardAppointmentDoctor{
         stage.show();
         doctorDetail.userProfile = null;
         doctorDetail = null;
+        userProfile = null;
     }
 
     public void getTimeSlots(ActionEvent actionEvent) throws SQLException {
@@ -150,6 +148,7 @@ public class DashboardAppointmentDoctor{
         Statement stmt = con.createStatement();
         stmt.executeUpdate("insert into appointment_tbl(hoc_id, doc_id, category,timeslot,user_id,date_app) values" +
                 "("+ clinic_id + ", " + doctorDetail.getDoc_id() + ", '" + symptoms.getText() + "', '" + f.toString() + "'," + doctorDetail.getCaller_id() + ",'" + date.getValue().toString() + "')");
+        System.out.println("Appointment Booked");
 
     }
 }
