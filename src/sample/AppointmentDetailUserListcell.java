@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class AppointmentDetailUserListcell extends javafx.scene.control.ListCell<AppointmentDetailUser> {
-        int currentIndex;
+        int currentIndex = -1;
         private FXMLLoader mLLoader;
         private AppointmentDetailUser appointmentDetailUser;
         public AnchorPane anchorPane;

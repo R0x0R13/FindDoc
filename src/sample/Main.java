@@ -19,7 +19,7 @@ public class Main extends Application {
     public void start(Stage signup_stage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("fxml/login.fxml"));
         Scene signup_scene = new Scene(root, 700, 400);
-        signup_stage.initStyle(StageStyle.DECORATED);
+        signup_stage.initStyle(StageStyle.UNDECORATED);
         signup_stage.setScene(signup_scene);
         signup_stage.show();
     }
