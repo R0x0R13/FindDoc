@@ -69,6 +69,7 @@ public class AppointmentDetailUserListcell extends javafx.scene.control.ListCell
 
         private void cancelAppointment() throws SQLException {
             appointmentDetailUser = getItem();
+            setVisible(false);
             Connection con = new ConnectDatabase().connectToDatabase();
             Statement stmt = con.createStatement();
             stmt.executeUpdate("Delete from appointment_tbl where hoc_id = " + appointmentDetailUser.hoc_id + " and doc_id = " + appointmentDetailUser.doc_id + " and app_id = " + appointmentDetailUser.app_id);

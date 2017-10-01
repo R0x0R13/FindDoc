@@ -1,19 +1,18 @@
 package sample;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXListCell;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class DoctorListViewCellController extends ListCell<DoctorDetail> {
+public class DoctorListViewCellController extends JFXListCell<DoctorDetail> {
     @FXML Label name;
     @FXML Label type;
     @FXML Label spec;

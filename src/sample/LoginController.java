@@ -1,19 +1,22 @@
 package sample;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class LoginController {
+    public StackPane stackPane;
     @FXML JFXTextField username;
     @FXML JFXPasswordField password;
     @FXML JFXButton signup;
@@ -46,13 +49,21 @@ public class LoginController {
             controller.initData(new LoginProfile(username.getText(), password.getText(), rs.getString(3)));
             stage.show();
         }
+        else{
+            JFXDialogLayout content = new JFXDialogLayout();
+            content.setHeading(new Text("Error"));
+            content.setBody(new Text("Please check your password!"));
+            JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.CENTER);
+            dialog.setMaxWidth(250);
+            dialog.show();
+        }
     }
     @FXML void signup() throws IOException{
         Stage stage;
         FXMLLoader root;
         stage=(Stage) signup.getScene().getWindow();
         root = new FXMLLoader(getClass().getResource("fxml/signup_fxml.fxml"));
-        Scene scene = new Scene((AnchorPane) root.load(), 400,700);
+        Scene scene = new Scene(root.load(), 430,687);
         stage.setScene(scene);
         stage.show();
     }

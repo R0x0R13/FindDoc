@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.*?>
 <?import javafx.scene.control.cell.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -45,7 +45,7 @@
          </children></AnchorPane>
       <AnchorPane layoutX="205.0" layoutY="107.0" prefHeight="419.0" prefWidth="652.0">
          <children>
-            <ListView fx:id="listView" prefHeight="419.0" prefWidth="650.0" />
+            <JFXListView fx:id="listView" prefHeight="419.0" prefWidth="650.0" />
             <TableView fx:id="app_tbl" layoutX="1.0" prefHeight="419.0" prefWidth="650.0">
               <columns>
                   <TableColumn fx:id="t_date" prefWidth="90.0" text="Date"><cellValueFactory><PropertyValueFactory property="date" />  </cellValueFactory> </TableColumn>

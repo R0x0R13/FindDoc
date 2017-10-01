@@ -1,8 +1,6 @@
 package sample;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,6 +8,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -18,6 +18,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DashboardProfileController {
+    public StackPane stackPane;
     private UserProfile userProfile;
     @FXML JFXButton signout;
     @FXML JFXTextField name;
@@ -96,75 +97,79 @@ public class DashboardProfileController {
     }
 
     public void modify() throws SQLException {
-        Connection con = new ConnectDatabase().connectToDatabase();
-        StringBuilder modification = new StringBuilder("");
-        int flag = 0;
+            Connection con = new ConnectDatabase().connectToDatabase();
+            StringBuilder modification = new StringBuilder("");
+            int flag = 0;
 
-        if(!name.getText().equals("")){
-            flag = 1;
-            modification.append("fname = '" + name.getText() + "'");
-        }
-        if(!lastname.getText().equals("")) {
-            if (flag == 1)
-                modification.append(",lname = '").append(lastname.getText()).append("'");
-            else {
-                modification.append("lname = '").append(lastname.getText()).append("'");
+            if (!name.getText().equals("")) {
                 flag = 1;
+                modification.append("fname = '" + name.getText() + "'");
             }
-        }
-        if(!dob.getEditor().getText().equals("")) {
-            if (flag == 1)
-                modification.append(", dob = '").append(dob.getValue().toString()).append("'");
-            else {
-                modification.append("dob = '").append(dob.getValue().toString()).append("'");
-                flag = 1;
+            if (!lastname.getText().equals("")) {
+                if (flag == 1)
+                    modification.append(",lname = '").append(lastname.getText()).append("'");
+                else {
+                    modification.append("lname = '").append(lastname.getText()).append("'");
+                    flag = 1;
+                }
             }
-        }
-        if(!email.getText().equals("")) {
-            if (flag == 1)
-                modification.append(", email = '").append(email.getText()).append("'");
+            if (!dob.getEditor().getText().equals("")) {
+                if (flag == 1)
+                    modification.append(", dob = '").append(dob.getValue().toString()).append("'");
+                else {
+                    modification.append("dob = '").append(dob.getValue().toString()).append("'");
+                    flag = 1;
+                }
+            }
+            if (!email.getText().equals("")) {
+                if (flag == 1)
+                    modification.append(", email = '").append(email.getText()).append("'");
 
-            else {
-                modification.append("email = '").append(email.getText()).append("'");
-                flag = 1;
-            }
-        }
-        if(!mob.getText().equals("")){
-            if (flag==1)
-                modification.append(", mob_no = '").append(mob.getText()).append("'");
-            else{
-                modification.append("mob_no = '").append(mob.getText()).append("'");
-                flag = 1;
-            }
-        }
-        if(!(bg.getSelectionModel().getSelectedItem() == null)){
-            if(flag == 1)
-                modification.append(", bg = '").append(bg.getSelectionModel().getSelectedItem()).append("'");
-            else{
-                flag = 1;
-                modification.append(" bg = '").append(bg.getSelectionModel().getSelectedItem()).append("'");
-            }
-        }
-        if(!(gender.getSelectionModel().getSelectedItem() == null)){
-            if(flag ==1)
-                if(gender.getSelectionModel().getSelectedItem().equals("Male")){
-                    modification.append(", gender = 'M'");
-                }
-                else{
-                    modification.append(", gender = 'F'");
-                }
-            else{
-                if(gender.getSelectionModel().getSelectedItem().equals("Male")){
-                    modification.append(" gender = 'M'");
-                }
-                else{
-                    modification.append(" gender = 'F'");
+                else {
+                    modification.append("email = '").append(email.getText()).append("'");
+                    flag = 1;
                 }
             }
-        }
-        Statement stmt = con.createStatement();
-        stmt.executeUpdate("update user_profile set " + modification + "where user_id = " + userProfile.getUser_id());
-        con.close();
+            if (!mob.getText().equals("")) {
+                if (flag == 1)
+                    modification.append(", mob_no = '").append(mob.getText()).append("'");
+                else {
+                    modification.append("mob_no = '").append(mob.getText()).append("'");
+                    flag = 1;
+                }
+            }
+            if (!(bg.getSelectionModel().getSelectedItem() == null)) {
+                if (flag == 1)
+                    modification.append(", bg = '").append(bg.getSelectionModel().getSelectedItem()).append("'");
+                else {
+                    flag = 1;
+                    modification.append(" bg = '").append(bg.getSelectionModel().getSelectedItem()).append("'");
+                }
+            }
+            if (!(gender.getSelectionModel().getSelectedItem() == null)) {
+                if (flag == 1)
+                    if (gender.getSelectionModel().getSelectedItem().equals("Male")) {
+                        modification.append(", gender = 'M'");
+                    } else {
+                        modification.append(", gender = 'F'");
+                    }
+                else {
+                    if (gender.getSelectionModel().getSelectedItem().equals("Male")) {
+                        modification.append(" gender = 'M'");
+                    } else {
+                        modification.append(" gender = 'F'");
+                    }
+                }
+            }
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate("update user_profile set " + modification + "where user_id = " + userProfile.getUser_id());
+            con.close();
+            JFXDialogLayout content = new JFXDialogLayout();
+            content.setHeading(new Text("Done"));
+            content.setBody(new Text("Profile has been modified\nChanges will be shown on fresh session!"));
+            JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.CENTER);
+            dialog.setMaxWidth(250);
+            dialog.show();
     }
 
     public void reset(){

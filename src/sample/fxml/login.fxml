@@ -7,39 +7,43 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.Blend?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #380000;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoginController">
    <children>
-      <AnchorPane layoutX="384.0" layoutY="25.0" prefHeight="356.0" prefWidth="291.0" style="-fx-background-color: #b50000;">
+      <StackPane fx:id="stackPane" layoutX="384.0" layoutY="25.0">
          <children>
-            <JFXTextField fx:id="username" focusColor="#e5e0e0" labelFloat="true" layoutX="54.0" layoutY="99.0" prefHeight="29.0" prefWidth="186.0" promptText="Username" style="-fx-prompt-text-fill: #e5e0e0; -fx-text-fill: #e5e0e0;" unFocusColor="#e5e0e0">
-               <effect>
-                  <Blend />
-               </effect>
-            </JFXTextField>
-            <JFXPasswordField fx:id="password" focusColor="#e5e0e0" labelFloat="true" layoutX="54.0" layoutY="157.0" prefHeight="29.0" prefWidth="186.0" promptText="Password" style="-fx-prompt-text-fill: #e5e0e0; -fx-text-fill: #e5e0e0;" unFocusColor="#e5e0e0" />
-            <JFXButton fx:id="signin" layoutX="54.0" layoutY="206.0" onAction="#signin" prefHeight="31.0" prefWidth="186.0" ripplerFill="#e5e0e0" style="-fx-text-fill: #e5e0e0; -fx-background-color: #ff3838;" text="SignIn" />
-            <Label layoutX="112.0" layoutY="44.0" style="-fx-text-fill: #e5e0e0;" text="Sign In">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-            <Hyperlink layoutX="95.0" layoutY="237.0" prefHeight="29.0" prefWidth="102.0" text="Forgot Password?">
-               <font>
-                  <Font size="12.0" />
-               </font>
-            </Hyperlink>
-            <Label fx:id="error" layoutX="62.0" layoutY="281.0" prefHeight="21.0" prefWidth="169.0" textAlignment="CENTER" textFill="#06fc47" />
+            <AnchorPane prefHeight="356.0" prefWidth="291.0" style="-fx-background-color: #b50000;">
+               <children>
+                  <JFXTextField fx:id="username" focusColor="#e5e0e0" labelFloat="true" layoutX="54.0" layoutY="99.0" prefHeight="29.0" prefWidth="186.0" promptText="Username" style="-fx-prompt-text-fill: #e5e0e0; -fx-text-fill: #e5e0e0;" unFocusColor="#e5e0e0">
+                     <effect>
+                        <Blend />
+                     </effect>
+                  </JFXTextField>
+                  <JFXPasswordField fx:id="password" focusColor="#e5e0e0" labelFloat="true" layoutX="54.0" layoutY="157.0" prefHeight="29.0" prefWidth="186.0" promptText="Password" style="-fx-prompt-text-fill: #e5e0e0; -fx-text-fill: #e5e0e0;" unFocusColor="#e5e0e0" />
+                  <JFXButton fx:id="signin" buttonType="RAISED" layoutX="54.0" layoutY="206.0" onAction="#signin" prefHeight="31.0" prefWidth="186.0" ripplerFill="#e5e0e0" style="-fx-text-fill: #e5e0e0; -fx-background-color: #ff3838;" text="SignIn" />
+                  <Label layoutX="112.0" layoutY="44.0" style="-fx-text-fill: #e5e0e0;" text="Sign In">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <Hyperlink layoutX="95.0" layoutY="237.0" prefHeight="29.0" prefWidth="102.0" text="Forgot Password?">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                  </Hyperlink>
+                  <Label fx:id="error" layoutX="62.0" layoutY="281.0" prefHeight="21.0" prefWidth="169.0" textAlignment="CENTER" textFill="#06fc47" />
+               </children>
+            </AnchorPane>
          </children>
-      </AnchorPane>
+      </StackPane>
       <Label layoutX="40.0" layoutY="75.0" prefHeight="35.0" prefWidth="235.0" text="Welcome to FindDoc" textFill="#e5e0e0">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
       <Text fill="#a1a1a1" layoutX="46.0" layoutY="141.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We find you the doctor you need!" wrappingWidth="176.6708984375" />
-      <JFXButton fx:id="signup" layoutX="40.0" layoutY="184.0" onAction="#signup" prefHeight="31.0" prefWidth="218.0" ripplerFill="#e5e0e0" style="-fx-background-color: #ff3838;" text="Sign Up" textFill="#e5e0e0" />
+      <JFXButton fx:id="signup" buttonType="RAISED" layoutX="40.0" layoutY="184.0" onAction="#signup" prefHeight="31.0" prefWidth="218.0" ripplerFill="#e5e0e0" style="-fx-background-color: #ff3838;" text="Sign Up" textFill="#e5e0e0" />
    </children>
 </AnchorPane>

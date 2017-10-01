@@ -1,9 +1,6 @@
 package sample;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,6 +8,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -40,6 +39,7 @@ public class DashboardAppointmentDoctor{
     LocalTime t;
     int index;
     int clinic_id;
+    public StackPane stackPane;
     public void initData(DoctorDetail doctorDetail) throws SQLException {
         this.doctorDetail = doctorDetail;
         this.userProfile = doctorDetail.userProfile;
@@ -149,6 +149,10 @@ public class DashboardAppointmentDoctor{
         stmt.executeUpdate("insert into appointment_tbl(hoc_id, doc_id, category,timeslot,user_id,date_app) values" +
                 "("+ clinic_id + ", " + doctorDetail.getDoc_id() + ", '" + symptoms.getText() + "', '" + f.toString() + "'," + doctorDetail.getCaller_id() + ",'" + date.getValue().toString() + "')");
         System.out.println("Appointment Booked");
-
+        JFXDialogLayout content = new JFXDialogLayout();
+        content.setHeading(new Text("Done"));
+        content.setBody(new Text("Your Appointment has been booked!"));
+        JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.CENTER);
+        dialog.show();
     }
 }

@@ -8,69 +8,124 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import javax.jws.soap.SOAPBinding;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by harshit on 10-09-2017.
  */
 public class SignupController implements Initializable {
-    @FXML
-    private JFXTextField user_name;
-    @FXML
-    private JFXTextField last_name;
-    @FXML
-    private JFXPasswordField password2;
-    @FXML
-    private JFXTextField emailid;
-    @FXML
-    private JFXTextField mob_no;
-    @FXML
-    private JFXPasswordField password1;
-    @FXML
-    private JFXDatePicker dob_date_picker;
-    @FXML
-    private JFXTextField first_name;
-    @FXML
-    private ImageView backbtn;
-    @FXML
-    private JFXRadioButton patient;
+    public StackPane stackPane;
+    @FXML private JFXTextField user_name;
+    @FXML private JFXTextField last_name;
+    @FXML private JFXPasswordField password2;
+    @FXML private JFXTextField emailid;
+    @FXML private JFXTextField mob_no;
+    @FXML private JFXPasswordField password1;
+    @FXML private JFXDatePicker dob_date_picker;
+    @FXML private JFXTextField first_name;
+    @FXML private ImageView backbtn;
+    @FXML private JFXRadioButton patient;
+
+
+    private boolean validateEmail(String email){
+        Pattern p = Pattern.compile("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])");
+        Matcher m = p.matcher(email);
+        if(m.find() && m.group().equalsIgnoreCase(email))
+            return true;
+        else{
+            JFXDialogLayout content = new JFXDialogLayout();
+            content.setHeading(new Text("Invalid E-mail"));
+            content.setBody(new Text("Please enter a valid E-mail"));
+            JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.TOP);
+            dialog.show();
+        }
+        return false;
+    }
+    private boolean validateFirstName(){
+        Pattern p = Pattern.compile("[a-zA-Z]+");
+        Matcher m = p.matcher(first_name.getText());
+        if(m.find() && m.group().equalsIgnoreCase(first_name.getText()))
+            return true;
+        else{
+            JFXDialogLayout content = new JFXDialogLayout();
+            content.setHeading(new Text("Invalid Name"));
+            content.setBody(new Text("Name can only contain text!"));
+            JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.TOP);
+            dialog.show();
+        }
+        return false;
+    }
+    private boolean validateLastName(){
+        Pattern p = Pattern.compile("[a-zA-Z]+");
+        Matcher m = p.matcher(last_name.getText());
+        if(m.find() && m.group().equalsIgnoreCase(last_name.getText()))
+            return true;
+        else{
+            JFXDialogLayout content = new JFXDialogLayout();
+            content.setHeading(new Text("Invalid Name"));
+            content.setBody(new Text("Name can only contain text!"));
+            JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.TOP);
+            dialog.show();
+        }
+        return false;
+    }
+
+    private boolean validateUserName(){
+        Pattern p = Pattern.compile("[a-zA-Z]+[a-zA-Z0-9_]*");
+        Matcher m = p.matcher(last_name.getText());
+        if(m.find() && m.group().equalsIgnoreCase(last_name.getText()) && user_name.getText().length() > 6 && user_name.getText().length() < 13)
+            return true;
+        else{
+            JFXDialogLayout content = new JFXDialogLayout();
+            content.setHeading(new Text("Invalid username"));
+            content.setBody(new Text("Username must start with a letter\nIt must be between 8 to 13 characters\nIt can contain number and '_'"));
+            JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.TOP);
+            dialog.show();
+        }
+        return false;
+    }
+
 
     @FXML
     void signup(ActionEvent event) {
-        if (patient.isSelected()) {
+        if (patient.isSelected() && validateFirstName() && validateLastName()
+                && validateUserName() && validateEmail(emailid.getText())) {
             Connection con = new ConnectDatabase().connectToDatabase();
-            String usr_name = user_name.getText();
-            String fname = first_name.getText();
-            String lname = last_name.getText();
-            String pass1 = password1.getText();
-            String pass2 = password2.getText();
-            String mob = mob_no.getText();
-            String dob = dob_date_picker.getValue().toString();
-            System.out.println(dob);
-            String email = emailid.getText();
             int user_id;
             try {
                 Statement statement = con.createStatement();
-                ResultSet rs = statement.executeQuery("select user_name from login_tbl where user_name = '" + usr_name + "'");
-                if (!rs.next() && pass1.equals(pass2)) {
-                    statement.executeUpdate("insert into login_tbl(user_name, password, acc_type)values('" + usr_name + "','" + pass1 + "','P')");
+                ResultSet rs = statement.executeQuery("select user_name from login_tbl where user_name = '" + user_name.getText() + "'");
+                if (!rs.next() && password1.getText().equals(password2.getText())) {
+                    statement.executeUpdate("insert into login_tbl(user_name, password, acc_type)values('" + user_name.getText() + "','" + password1.getText() + "','P')");
                     System.out.println("Inserted into login_tbl");
-                    rs = statement.executeQuery("select user_id from login_tbl where user_name = '" + usr_name + "'");
+                    rs = statement.executeQuery("select user_id from login_tbl where user_name = '" + user_name.getText() + "'");
                     rs.next();
                     user_id = rs.getInt(1);
-                    statement.executeUpdate("insert into user_profile(user_id, fname, lname, dob, email, mob_no) values(" + user_id + ",'" + fname + "','" + lname + "','" + dob + "','" + email + "','" + mob + "')");
+                    statement.executeUpdate("insert into user_profile(user_id, fname, lname, dob, email, mob_no) values(" + user_id + ",'" + first_name.getText() + "','" + last_name.getText() + "','" + dob_date_picker.getValue().toString() + "','" + emailid.getText() + "','" + mob_no.getText() + "')");
                     System.out.println("Inserted into user_profile");
+                    JFXDialogLayout content = new JFXDialogLayout();
+                    //content.setHeading(new Text("User Created"));
+                    content.setBody(new Text("User Created"));
+                    JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.CENTER);
+                    dialog.show();
+                    dialog.close();
                 } else {
-                    System.out.printf("Couldn't insert user!");
+                    JFXDialogLayout content = new JFXDialogLayout();
+                    content.setHeading(new Text("Error"));
+                    content.setBody(new Text("Passwords don't match or Username is already in use"));
+                    JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.CENTER);
+                    dialog.show();
                 }
                 con.close();
             } catch (Exception e) {
@@ -113,7 +168,7 @@ public class SignupController implements Initializable {
             FXMLLoader root;
             stage = (Stage) user_name.getScene().getWindow();
             root = new FXMLLoader(getClass().getResource("fxml/signup_clinic.fxml"));
-            Scene scene = new Scene(root.load(), 870, 550);
+            Scene scene = new Scene(root.load(), 424, 680);
             stage.setScene(scene);
             SignupClinic controller = root.getController();
             controller.initData(userProfile, loginProfile);
@@ -124,12 +179,11 @@ public class SignupController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         dob_date_picker.getEditor().setStyle("-fx-text-fill:#e5e5e5; -fx-prompt-text-fill:#e5e5e5");
+        mob_no.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                mob_no.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
         patient.setSelected(true);
-        {
-            user_name.focusedProperty().addListener(((observable, oldValue, newValue) -> {
-                if (!newValue.toString().matches("[a-zA-Z]+[0-9]*"))
-                    System.out.println("it does not match");
-            }));
-        }
     }
 }

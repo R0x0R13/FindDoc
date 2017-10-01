@@ -1,6 +1,7 @@
 package sample;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -33,7 +34,8 @@ public class DashboardController implements Initializable{
     public TableColumn t_symptom;
     public TableColumn t_fee;
     @FXML JFXButton signout;
-    @FXML ListView<DoctorDetail> listView;
+    @FXML
+    JFXListView<DoctorDetail> listView;
     @FXML JFXButton profile;
     ClinicDetail clinicDetail;
     private UserProfile userProfile;

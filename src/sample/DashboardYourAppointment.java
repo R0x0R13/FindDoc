@@ -1,7 +1,6 @@
 package sample;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,6 +10,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -27,6 +28,9 @@ public class DashboardYourAppointment {
     public JFXTextField doc_spec;
     public JFXTextField fee;
     public GridPane gridPane;
+    public JFXTimePicker time_from;
+    public JFXTimePicker time_to;
+    public StackPane stackPane;
 
     @FXML
     JFXButton signout;
@@ -96,12 +100,32 @@ public class DashboardYourAppointment {
         }
     }
 
-    public void addDoctor(ActionEvent actionEvent) throws SQLException {
+    public void addDoctor(ActionEvent actionEvent) throws SQLException{
+        int doc_id = -1;
+        int hoc_id = -1;
         Connection con = new ConnectDatabase().connectToDatabase();
         Statement stmt = con.createStatement();
         stmt.executeUpdate("insert into doctor_tbl(user_id, specialisation,education,d_type,fee,doc_name) values ("+
                 userProfile.getUser_id() + ", '" + doc_spec.getText() + "','" + doc_edu.getText() + "','" + doc_type.getText() + "', " +
                 fee.getText() + ", '" + doc_name.getText() + "')");
+        ResultSet rs = stmt.getGeneratedKeys();
+        while(rs.next()){
+            doc_id = rs.getInt(1);
+        }
+        Statement getHocID = con.createStatement();
+        rs = getHocID.executeQuery("select hoc_id from hoc_tbl where user_id = " + userProfile.getUser_id());
+        while(rs.next()){
+            hoc_id = rs.getInt(1);
+        }
+        Statement stmt1 = con.createStatement();
+        stmt1.executeUpdate("insert into works_tbl values("+doc_id+","+hoc_id+ ",'" +time_from.getValue().toString() + "','" + time_to.getValue().toString() + "')");
         System.out.println("Inserted successfully");
+        JFXDialogLayout content = new JFXDialogLayout();
+        content.setHeading(new Text("Done"));
+        content.setBody(new Text("Doctor has been added to your clinic!"));
+        JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.CENTER);
+        dialog.setMaxWidth(250);
+        dialog.show();
     }
+
 }
