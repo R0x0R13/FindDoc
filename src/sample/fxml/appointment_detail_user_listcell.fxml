@@ -4,26 +4,28 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<AnchorPane fx:id="anchorPane" prefHeight="113.0" prefWidth="642.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Label fx:id="doc_name" layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="117.0" text="Label">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
-      <Label fx:id="clinic_name" layoutX="14.0" layoutY="39.0" prefHeight="20.0" prefWidth="270.0" text="Label">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="clinic_address" layoutX="14.0" layoutY="59.0" prefHeight="17.0" prefWidth="270.0" text="Label" />
-      <Label fx:id="clinic_ph" layoutX="14.0" layoutY="76.0" prefHeight="17.0" prefWidth="270.0" text="Label" />
-      <Label fx:id="app_date" layoutX="505.0" layoutY="18.0" prefHeight="21.0" prefWidth="117.0" text="Label" />
-      <Label fx:id="app_time" layoutX="437.0" layoutY="18.0" prefHeight="17.0" prefWidth="59.0" text="Label" />
-      <Label fx:id="fee" layoutX="538.0" layoutY="48.0" prefHeight="17.0" prefWidth="52.0" text="Label" textAlignment="RIGHT" />
-      <JFXButton fx:id="cancel" layoutX="505.0" layoutY="72.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="117.0" style="-fx-background-color: #ff3838;" text="Cancel" textFill="#e5e5e5">
-         <font>
-            <Font size="14.0" />
-         </font></JFXButton>
-   </children>
+<AnchorPane fx:id="anchorPane" prefHeight="113.0" prefWidth="642.0" xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1">
+   <Label fx:id="doc_name" layoutX="14.0" layoutY="14.0" prefHeight="17.0" prefWidth="117.0" text="Label">
+      <font>
+         <Font size="16.0"/>
+      </font>
+   </Label>
+   <Label fx:id="clinic_name" layoutX="14.0" layoutY="39.0" prefHeight="20.0" prefWidth="270.0" text="Label">
+      <font>
+         <Font size="14.0"/>
+      </font>
+   </Label>
+   <Label fx:id="clinic_address" layoutX="14.0" layoutY="59.0" prefHeight="17.0" prefWidth="270.0" text="Label"/>
+   <Label fx:id="clinic_ph" layoutX="14.0" layoutY="76.0" prefHeight="17.0" prefWidth="270.0" text="Label"/>
+   <Label fx:id="app_date" layoutX="505.0" layoutY="18.0" prefHeight="21.0" prefWidth="117.0" text="Label"/>
+   <Label fx:id="app_time" layoutX="437.0" layoutY="18.0" prefHeight="17.0" prefWidth="59.0" text="Label"/>
+   <Label fx:id="fee" layoutX="538.0" layoutY="48.0" prefHeight="17.0" prefWidth="52.0" text="Label"
+          textAlignment="RIGHT"/>
+   <JFXButton fx:id="cancel" layoutX="505.0" layoutY="72.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="117.0"
+              style="-fx-background-color: #ff3838;" text="Cancel" textFill="#e5e5e5">
+      <font>
+         <Font size="14.0"/>
+      </font>
+   </JFXButton>
 </AnchorPane>

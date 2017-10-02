@@ -21,11 +21,6 @@ public class LoginController {
     @FXML JFXPasswordField password;
     @FXML JFXButton signup;
     @FXML Label error;
-    boolean isUserName(String username){
-        if(username.matches("[a-zA-z0-9]+"))
-            return true;
-        return false;
-    }
     @FXML void signin() throws SQLException, IOException {
         String usrname = username.getText();
         String pass = password.getText();
@@ -45,7 +40,7 @@ public class LoginController {
             root = new FXMLLoader(getClass().getResource("fxml/dashboard.fxml"));
             Scene scene = new Scene(root.load(), 870,550);
             stage.setScene(scene);
-            DashboardController controller = root.<DashboardController>getController();
+            DashboardController controller = root.getController();
             controller.initData(new LoginProfile(username.getText(), password.getText(), rs.getString(3)));
             stage.show();
         }

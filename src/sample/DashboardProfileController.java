@@ -65,7 +65,7 @@ public class DashboardProfileController {
         root = new FXMLLoader(getClass().getResource("fxml/dashboard.fxml"));
         Scene scene = new Scene(root.load(), 870,550);
         stage.setScene(scene);
-        DashboardController controller = root.<DashboardController>getController();
+        DashboardController controller = root.getController();
         controller.initData(userProfile);
         stage.show();
     }
@@ -103,7 +103,7 @@ public class DashboardProfileController {
 
             if (!name.getText().equals("")) {
                 flag = 1;
-                modification.append("fname = '" + name.getText() + "'");
+                modification.append("fname = '").append(name.getText()).append("'");
             }
             if (!lastname.getText().equals("")) {
                 if (flag == 1)
@@ -173,7 +173,7 @@ public class DashboardProfileController {
     }
 
     public void reset(){
-        name.clear();;
+        name.clear();
         lastname.clear();
         email.clear();
         dob.getEditor().clear();

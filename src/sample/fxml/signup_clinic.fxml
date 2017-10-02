@@ -7,35 +7,49 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="680.0" prefWidth="424.0" style="-fx-background-color: #380000;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SignupClinic">
-    <children>
-      <StackPane fx:id="stackPane" layoutX="42.0" layoutY="59.0">
-         <children>
-              <AnchorPane prefHeight="587.0" prefWidth="340.0" style="-fx-background-color: #b50000;">
-                  <children>
-                      <JFXTextField fx:id="clinic_name" focusColor="#e5e0e0" layoutX="23.0" layoutY="94.0" prefHeight="29.0" prefWidth="295.0" promptText="Clinic name" style="-fx-prompt-text-fill: #e5e0e0; -fx-text-fill: #e5e0e0;" unFocusColor="#e5e0e0" />
-                      <JFXTextField fx:id="emailid" focusColor="#e5e0e0" layoutX="23.0" layoutY="424.0" prefHeight="29.0" prefWidth="295.0" promptText="E-mail ID" style="-fx-prompt-text-fill: #e5e0e0; -fx-text-fill: #e5e0e0;" unFocusColor="#e5e0e0" />
-                      <JFXTextField fx:id="mob_no" focusColor="#e5e0e0" layoutX="24.0" layoutY="476.0" prefHeight="29.0" prefWidth="295.0" promptText="Phone number" style="-fx-prompt-text-fill: #e5e0e0; -fx-text-fill: #e5e0e0;" unFocusColor="#e5e0e0" />
-                      <Label layoutX="108.0" layoutY="28.0" prefHeight="43.0" prefWidth="127.0" text="Clinic name" textFill="#e5e0e0">
-                          <font>
-                              <Font size="24.0" />
-                          </font>
-                      </Label>
-                      <JFXButton layoutX="50.0" layoutY="529.0" mnemonicParsing="false" onAction="#signup" prefHeight="31.0" prefWidth="104.0" style="-fx-background-color: #ff3838;" text="Submit" textFill="#e5e0e0" />
-                      <JFXButton layoutX="171.0" layoutY="529.0" mnemonicParsing="false" onAction="#reset" prefHeight="31.0" prefWidth="104.0" style="-fx-background-color: #ff3838;" text="Reset" textFill="#e5e0e0" />
-                  <JFXComboBox fx:id="state_cb" focusColor="#ff2d2d" layoutX="23.0" layoutY="155.0" prefHeight="31.0" prefWidth="295.0" promptText="Select state" style="-fx-text-fill: #e5e5e5; -fx-prompt-text-fill: #e5e5e5;" unFocusColor="#e5e5e5" />
-                  <JFXTextField fx:id="clinic_city" focusColor="#e5e0e0" layoutX="24.0" layoutY="213.0" prefHeight="29.0" prefWidth="295.0" promptText="Enter city" style="-fx-prompt-text-fill: #e5e0e0; -fx-text-fill: #e5e0e0;" unFocusColor="#e5e0e0" />
-                  <JFXTextField fx:id="clinic_pin" focusColor="#e5e0e0" layoutX="23.0" layoutY="372.0" prefHeight="29.0" prefWidth="295.0" promptText="Enter PIN" style="-fx-prompt-text-fill: #e5e0e0; -fx-text-fill: #e5e0e0;" unFocusColor="#e5e0e0" />
-                  <JFXTextField fx:id="clinic_line" focusColor="#e5e0e0" layoutX="23.0" layoutY="317.0" prefHeight="29.0" prefWidth="295.0" promptText="Address line" style="-fx-prompt-text-fill: #e5e0e0; -fx-text-fill: #e5e0e0;" unFocusColor="#e5e0e0" />
-                  <JFXTextField fx:id="clinic_area" focusColor="#e5e0e0" layoutX="24.0" layoutY="265.0" prefHeight="29.0" prefWidth="295.0" promptText="Enter area" style="-fx-prompt-text-fill: #e5e0e0; -fx-text-fill: #e5e0e0;" unFocusColor="#e5e0e0" />
-                  </children>
-              </AnchorPane>
-         </children>
-      </StackPane>
-        <ImageView fx:id="backbtn" fitHeight="59.0" fitWidth="79.0" layoutX="-6.0" onMouseClicked="#back" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@image/back.png" />
-            </image>
-        </ImageView>
-    </children>
+<AnchorPane prefHeight="680.0" prefWidth="424.0" style="-fx-background-color: #380000;"
+            xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sample.SignupClinic">
+    <StackPane fx:id="stackPane" layoutX="42.0" layoutY="59.0">
+        <AnchorPane prefHeight="587.0" prefWidth="340.0" style="-fx-background-color: #b50000;">
+            <JFXTextField fx:id="clinic_name" focusColor="#e5e0e0" layoutX="23.0" layoutY="94.0" prefHeight="29.0"
+                          prefWidth="295.0" promptText="Clinic name"
+                          style="-fx-prompt-text-fill: #e5e0e0; -fx-text-fill: #e5e0e0;" unFocusColor="#e5e0e0"/>
+            <JFXTextField fx:id="emailid" focusColor="#e5e0e0" layoutX="23.0" layoutY="424.0" prefHeight="29.0"
+                          prefWidth="295.0" promptText="E-mail ID"
+                          style="-fx-prompt-text-fill: #e5e0e0; -fx-text-fill: #e5e0e0;" unFocusColor="#e5e0e0"/>
+            <JFXTextField fx:id="mob_no" focusColor="#e5e0e0" layoutX="24.0" layoutY="476.0" prefHeight="29.0"
+                          prefWidth="295.0" promptText="Phone number"
+                          style="-fx-prompt-text-fill: #e5e0e0; -fx-text-fill: #e5e0e0;" unFocusColor="#e5e0e0"/>
+            <Label layoutX="108.0" layoutY="28.0" prefHeight="43.0" prefWidth="127.0" text="Clinic name"
+                   textFill="#e5e0e0">
+                <font>
+                    <Font size="24.0"/>
+                </font>
+            </Label>
+            <JFXButton layoutX="50.0" layoutY="529.0" mnemonicParsing="false" onAction="#signup" prefHeight="31.0"
+                       prefWidth="104.0" style="-fx-background-color: #ff3838;" text="Submit" textFill="#e5e0e0"/>
+            <JFXButton layoutX="171.0" layoutY="529.0" mnemonicParsing="false" onAction="#reset" prefHeight="31.0"
+                       prefWidth="104.0" style="-fx-background-color: #ff3838;" text="Reset" textFill="#e5e0e0"/>
+            <JFXComboBox fx:id="state_cb" focusColor="#ff2d2d" layoutX="23.0" layoutY="155.0" prefHeight="31.0"
+                         prefWidth="295.0" promptText="Select state"
+                         style="-fx-text-fill: #e5e5e5; -fx-prompt-text-fill: #e5e5e5;" unFocusColor="#e5e5e5"/>
+            <JFXTextField fx:id="clinic_city" focusColor="#e5e0e0" layoutX="24.0" layoutY="213.0" prefHeight="29.0"
+                          prefWidth="295.0" promptText="Enter city"
+                          style="-fx-prompt-text-fill: #e5e0e0; -fx-text-fill: #e5e0e0;" unFocusColor="#e5e0e0"/>
+            <JFXTextField fx:id="clinic_pin" focusColor="#e5e0e0" layoutX="23.0" layoutY="372.0" prefHeight="29.0"
+                          prefWidth="295.0" promptText="Enter PIN"
+                          style="-fx-prompt-text-fill: #e5e0e0; -fx-text-fill: #e5e0e0;" unFocusColor="#e5e0e0"/>
+            <JFXTextField fx:id="clinic_line" focusColor="#e5e0e0" layoutX="23.0" layoutY="317.0" prefHeight="29.0"
+                          prefWidth="295.0" promptText="Address line"
+                          style="-fx-prompt-text-fill: #e5e0e0; -fx-text-fill: #e5e0e0;" unFocusColor="#e5e0e0"/>
+            <JFXTextField fx:id="clinic_area" focusColor="#e5e0e0" layoutX="24.0" layoutY="265.0" prefHeight="29.0"
+                          prefWidth="295.0" promptText="Enter area"
+                          style="-fx-prompt-text-fill: #e5e0e0; -fx-text-fill: #e5e0e0;" unFocusColor="#e5e0e0"/>
+        </AnchorPane>
+    </StackPane>
+    <ImageView fx:id="backbtn" fitHeight="59.0" fitWidth="79.0" layoutX="-6.0" onMouseClicked="#back"
+               pickOnBounds="true" preserveRatio="true">
+        <Image url="@image/back.png"/>
+    </ImageView>
 </AnchorPane>

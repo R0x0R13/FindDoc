@@ -3,7 +3,7 @@ package sample;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class ConnectDatabase {
+class ConnectDatabase {
     public Connection connectToDatabase(){
         Connection con = null;
         try{

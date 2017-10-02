@@ -72,9 +72,7 @@
         </AnchorPane>
         <ImageView fx:id="backbtn" fitHeight="59.0" fitWidth="79.0" layoutX="-6.0" onMouseClicked="#back"
                    pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@image/back.png"/>
-            </image>
+            <Image url="@image/back.png"/>
         </ImageView>
     </AnchorPane>
 </StackPane>
