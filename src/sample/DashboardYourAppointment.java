@@ -31,6 +31,8 @@ public class DashboardYourAppointment {
     public JFXTimePicker time_from;
     public JFXTimePicker time_to;
     public StackPane stackPane;
+    public JFXButton searchDoctor;
+    public JFXButton appointments;
 
     @FXML
     JFXButton signout;
@@ -97,6 +99,8 @@ public class DashboardYourAppointment {
         }
         else if(userProfile.loginProfile.getAcc_type().equals("C")){
             listView.setVisible(false);
+            appointments.setText("add doctor");
+            searchDoctor.setText("appointments");
         }
     }
 
@@ -124,7 +128,6 @@ public class DashboardYourAppointment {
         content.setHeading(new Text("Done"));
         content.setBody(new Text("Doctor has been added to your clinic!"));
         JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.CENTER);
-        dialog.setMaxWidth(250);
         dialog.show();
     }
 

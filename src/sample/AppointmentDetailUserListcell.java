@@ -67,7 +67,7 @@ public class AppointmentDetailUserListcell extends javafx.scene.control.ListCell
 
         }
 
-        private void cancelAppointment() throws SQLException {
+        public void cancelAppointment() throws SQLException {
             appointmentDetailUser = getItem();
             setVisible(false);
             Connection con = new ConnectDatabase().connectToDatabase();

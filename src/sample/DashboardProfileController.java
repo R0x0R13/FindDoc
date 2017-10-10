@@ -19,6 +19,8 @@ import java.sql.Statement;
 
 public class DashboardProfileController {
     public StackPane stackPane;
+    public JFXButton searchDoctor;
+    public JFXButton appointments;
     private UserProfile userProfile;
     @FXML JFXButton signout;
     @FXML JFXTextField name;
@@ -50,6 +52,8 @@ public class DashboardProfileController {
         load();
     }
     public void load(){
+        appointments.setText("add doctor");
+        searchDoctor.setText("appointments");
         name.setPromptText(userProfile.getFirst_name());
         lastname.setPromptText(userProfile.getLast_name());
         dob.setPromptText(userProfile.getDob());
@@ -171,6 +175,14 @@ public class DashboardProfileController {
             dialog.setMaxWidth(250);
             dialog.show();
     }
+
+    public void setChanges(){
+        if(userProfile.loginProfile.getAcc_type().equals("C")){
+            appointments.setText("add doctor");
+            searchDoctor.setText("appointments");
+        }
+    }
+
 
     public void reset(){
         name.clear();

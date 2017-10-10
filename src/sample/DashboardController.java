@@ -33,6 +33,8 @@ public class DashboardController implements Initializable{
     public TableColumn t_patient;
     public TableColumn t_symptom;
     public TableColumn t_fee;
+    public JFXButton appointments;
+    public JFXButton searchDoctor;
     @FXML JFXButton signout;
     @FXML
     JFXListView<DoctorDetail> listView;
@@ -122,7 +124,8 @@ public class DashboardController implements Initializable{
         }
         else if(userProfile.loginProfile.getAcc_type().equals("C")){
             listView.setVisible(false);
-
+            appointments.setText("add doctor");
+            searchDoctor.setText("appointments");
             Connection con = new ConnectDatabase().connectToDatabase();
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("select * from appointment_tbl where hoc_id in (select hoc_id from hoc_tbl where user_id = " + userProfile.getUser_id() + ")");

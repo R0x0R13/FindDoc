@@ -18,6 +18,7 @@ public class DoctorListViewCellController extends JFXListCell<DoctorDetail> {
     @FXML Label spec;
     @FXML
     GridPane gridPane;
+    @FXML Label clinic_name;
     @FXML Label fee;
     @FXML JFXButton appointment;
     private FXMLLoader mLLoader;
@@ -50,6 +51,13 @@ public class DoctorListViewCellController extends JFXListCell<DoctorDetail> {
             name.setText(doctorDetail.getName());
             type.setText(doctorDetail.getType());
             spec.setText(doctorDetail.getSpec());
+            try {
+                ClinicDetail clinicDetail = new ClinicDetail(doctorDetail.getUser_id());
+                clinic_name.setText(clinicDetail.getName());
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
             fee.setText(String.valueOf(doctorDetail.getFee()));
             appointment.setOnAction(event -> bookAppointment());
             setText(null);

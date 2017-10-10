@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -39,7 +40,7 @@ public class SignupController implements Initializable {
 
 
     private boolean validateEmail(String email){
-        Pattern p = Pattern.compile("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)");
+        Pattern p = Pattern.compile("(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])");
         Matcher m = p.matcher(email);
         if(m.find() && m.group().equalsIgnoreCase(email))
             return true;
@@ -107,7 +108,12 @@ public class SignupController implements Initializable {
                 Statement statement = con.createStatement();
                 ResultSet rs = statement.executeQuery("select user_name from login_tbl where user_name = '" + user_name.getText() + "'");
                 if (!rs.next() && password1.getText().equals(password2.getText())) {
-                    statement.executeUpdate("insert into login_tbl(user_name, password, acc_type)values('" + user_name.getText() + "','" + password1.getText() + "','P')");
+                    CallableStatement cb = con.prepareCall("{call new_user(?,?,?)}");
+                    cb.setString(1, user_name.getText());
+                    cb.setString(2, password1.getText());
+                    cb.setString(3, "P");
+                    cb.execute();
+                    //statement.executeUpdate("insert into login_tbl(user_name, password, acc_type)values('" + user_name.getText() + "','" + password1.getText() + "','P')");
                     System.out.println("Inserted into login_tbl");
                     rs = statement.executeQuery("select user_id from login_tbl where user_name = '" + user_name.getText() + "'");
                     rs.next();
@@ -115,11 +121,10 @@ public class SignupController implements Initializable {
                     statement.executeUpdate("insert into user_profile(user_id, fname, lname, dob, email, mob_no) values(" + user_id + ",'" + first_name.getText() + "','" + last_name.getText() + "','" + dob_date_picker.getValue().toString() + "','" + emailid.getText() + "','" + mob_no.getText() + "')");
                     System.out.println("Inserted into user_profile");
                     JFXDialogLayout content = new JFXDialogLayout();
-                    //content.setHeading(new Text("User Created"));
+                    content.setHeading(new Text("Done"));
                     content.setBody(new Text("User Created"));
                     JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.CENTER);
                     dialog.show();
-                    dialog.close();
                 } else {
                     JFXDialogLayout content = new JFXDialogLayout();
                     content.setHeading(new Text("Error"));

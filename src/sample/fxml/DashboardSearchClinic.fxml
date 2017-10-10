@@ -6,92 +6,66 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DashboardYourAppointment">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DashboardYourAppointment">
     <AnchorPane prefHeight="549.0" prefWidth="188.0" style="-fx-background-color: #380000;">
-        <JFXButton buttonType="RAISED" layoutY="116.0" mnemonicParsing="false" onAction="#showSearchDoctor"
-                   prefHeight="31.0" prefWidth="188.0" text="search doctor" textFill="WHITE"/>
-        <ImageView fitHeight="29.0" fitWidth="30.0" layoutX="9.0" layoutY="118.0" pickOnBounds="true"
-                   preserveRatio="true">
-            <Image url="@image/search.png"/>
+        <JFXButton fx:id="searchDoctor" buttonType="RAISED" layoutY="116.0" mnemonicParsing="false" onAction="#showSearchDoctor" prefHeight="31.0" prefWidth="188.0" text="search doctor" textFill="WHITE" />
+        <ImageView fitHeight="29.0" fitWidth="30.0" layoutX="9.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@image/search.png" />
         </ImageView>
-        <JFXButton fx:id="profile" layoutY="178.0" mnemonicParsing="false" onAction="#showProfile" prefHeight="31.0"
-                   prefWidth="188.0" text="profile" textFill="WHITE"/>
-        <ImageView fitHeight="29.0" fitWidth="30.0" layoutX="9.0" layoutY="179.0" pickOnBounds="true"
-                   preserveRatio="true">
-            <Image url="@image/profile.png"/>
+        <JFXButton fx:id="profile" layoutY="178.0" mnemonicParsing="false" onAction="#showProfile" prefHeight="31.0" prefWidth="188.0" text="profile" textFill="WHITE" />
+        <ImageView fitHeight="29.0" fitWidth="30.0" layoutX="9.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@image/profile.png" />
         </ImageView>
-        <JFXButton fx:id="signout" layoutY="209.0" mnemonicParsing="false" onAction="#signout" prefHeight="31.0"
-                   prefWidth="188.0" text="signout" textFill="WHITE"/>
-        <ImageView fitHeight="29.0" fitWidth="30.0" layoutX="9.0" layoutY="210.0" pickOnBounds="true"
-                   preserveRatio="true">
-            <Image url="@image/signout.png"/>
+        <JFXButton fx:id="signout" layoutY="209.0" mnemonicParsing="false" onAction="#signout" prefHeight="31.0" prefWidth="188.0" text="signout" textFill="WHITE" />
+        <ImageView fitHeight="29.0" fitWidth="30.0" layoutX="9.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@image/signout.png" />
         </ImageView>
-        <JFXButton fx:id="searchClinic" buttonType="RAISED" layoutY="147.0" mnemonicParsing="false"
-                   prefHeight="31.0" prefWidth="188.0" style="-fx-background-color: #b50000;" text="search clinic"
-                   textFill="WHITE"/>
-        <ImageView fitHeight="29.0" fitWidth="30.0" layoutX="9.0" layoutY="148.0" pickOnBounds="true"
-                   preserveRatio="true">
-            <Image url="@image/test.png"/>
+        <JFXButton fx:id="appointments" buttonType="RAISED" layoutY="147.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="188.0" style="-fx-background-color: #b50000;" text="appointments" textFill="WHITE" />
+        <ImageView fitHeight="29.0" fitWidth="30.0" layoutX="9.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@image/test.png" />
         </ImageView>
     </AnchorPane>
     <AnchorPane layoutX="189.0" prefHeight="53.0" prefWidth="668.0" style="-fx-background-color: F0F0F5;">
         <Label layoutX="157.0" layoutY="12.0" prefHeight="29.0" prefWidth="208.0" text="Welcome to findDoc">
             <font>
-                <Font name="System Bold" size="18.0"/>
+                <Font name="System Bold" size="18.0" />
             </font>
         </Label>
     </AnchorPane>
     <AnchorPane layoutX="205.0" layoutY="107.0" prefHeight="419.0" prefWidth="652.0">
-        <ListView fx:id="listView" prefHeight="419.0" prefWidth="650.0"/>
+        <ListView fx:id="listView" prefHeight="419.0" prefWidth="650.0" />
         <StackPane fx:id="stackPane" layoutX="14.0" layoutY="29.0">
             <GridPane fx:id="gridPane" prefHeight="376.0" prefWidth="597.0">
                 <columnConstraints>
-                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.0" minWidth="10.0" prefWidth="90.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="10.0" prefWidth="49.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="92.0" minWidth="10.0" prefWidth="90.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="65.0" minWidth="10.0" prefWidth="49.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 </columnConstraints>
                 <rowConstraints>
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 </rowConstraints>
-                <Label prefHeight="21.0" prefWidth="158.0" text="Add Doctor" GridPane.columnIndex="2"
-                       GridPane.columnSpan="2">
+                <Label prefHeight="21.0" prefWidth="158.0" text="Add Doctor" GridPane.columnIndex="2" GridPane.columnSpan="2">
                     <font>
-                        <Font size="18.0"/>
+                        <Font size="18.0" />
                     </font>
                 </Label>
-                <JFXTextField fx:id="doc_name" focusColor="#f50707" labelFloat="true" promptText="Name"
-                              unFocusColor="#380000" GridPane.columnSpan="2" GridPane.rowIndex="1"/>
-                <JFXTextField fx:id="doc_type" focusColor="#f50707" labelFloat="true" layoutX="79.0"
-                              layoutY="69.0" promptText="Type" unFocusColor="#380000" GridPane.columnIndex="3"
-                              GridPane.columnSpan="2" GridPane.rowIndex="1"/>
-                <JFXTextField fx:id="doc_edu" focusColor="#f50707" labelFloat="true" layoutX="10.0"
-                              layoutY="118.0" promptText="Education" unFocusColor="#380000"
-                              GridPane.columnSpan="2" GridPane.rowIndex="2"/>
-                <JFXTextField fx:id="doc_spec" focusColor="#f50707" labelFloat="true" layoutX="10.0"
-                              layoutY="167.0" promptText="Specialization" unFocusColor="#380000"
-                              GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="2"/>
-                <JFXTextField fx:id="fee" focusColor="#f50707" labelFloat="true" layoutX="10.0" layoutY="216.0"
-                              prefHeight="29.0" prefWidth="84.0" promptText="Fee" unFocusColor="#380000"
-                              GridPane.rowIndex="4"/>
-                <JFXButton mnemonicParsing="false" onAction="#addDoctor" prefHeight="31.0" prefWidth="95.0"
-                           style="-fx-background-color: #ff3838;" text="Submit" textFill="WHITE"
-                           GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="5"/>
-                <JFXTimePicker fx:id="time_from" prefHeight="42.0" prefWidth="158.0" promptText="From"
-                               GridPane.columnSpan="2" GridPane.rowIndex="3"/>
-                <JFXTimePicker fx:id="time_to" prefHeight="42.0" prefWidth="231.0" promptText="To"
-                               GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="3"/>
+                <JFXTextField fx:id="doc_name" focusColor="#f50707" labelFloat="true" promptText="Name" unFocusColor="#380000" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+                <JFXTextField fx:id="doc_type" focusColor="#f50707" labelFloat="true" layoutX="79.0" layoutY="69.0" promptText="Type" unFocusColor="#380000" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+                <JFXTextField fx:id="doc_edu" focusColor="#f50707" labelFloat="true" layoutX="10.0" layoutY="118.0" promptText="Education" unFocusColor="#380000" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                <JFXTextField fx:id="doc_spec" focusColor="#f50707" labelFloat="true" layoutX="10.0" layoutY="167.0" promptText="Specialization" unFocusColor="#380000" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+                <JFXTextField fx:id="fee" focusColor="#f50707" labelFloat="true" layoutX="10.0" layoutY="216.0" prefHeight="29.0" prefWidth="84.0" promptText="Fee" unFocusColor="#380000" GridPane.rowIndex="4" />
+                <JFXButton mnemonicParsing="false" onAction="#addDoctor" prefHeight="31.0" prefWidth="95.0" style="-fx-background-color: #ff3838;" text="Submit" textFill="WHITE" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+                <JFXTimePicker fx:id="time_from" prefHeight="42.0" prefWidth="158.0" promptText="From" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                <JFXTimePicker fx:id="time_to" prefHeight="42.0" prefWidth="231.0" promptText="To" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="3" />
             </GridPane>
         </StackPane>
     </AnchorPane>
