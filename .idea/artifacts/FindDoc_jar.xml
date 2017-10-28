@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="FindDoc:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/FindDoc_jar</output-path>
+    <root id="archive" name="DBMS.jar">
+      <element id="module-output" name="DBMS" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/jfoenix.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/mysql-connector-java-5.0.8-bin.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

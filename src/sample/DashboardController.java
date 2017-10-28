@@ -36,8 +36,7 @@ public class DashboardController implements Initializable{
     public JFXButton appointments;
     public JFXButton searchDoctor;
     @FXML JFXButton signout;
-    @FXML
-    JFXListView<DoctorDetail> listView;
+    @FXML JFXListView<DoctorDetail> listView;
     @FXML JFXButton profile;
     ClinicDetail clinicDetail;
     private UserProfile userProfile;
