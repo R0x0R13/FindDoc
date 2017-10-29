@@ -75,4 +75,3 @@ public class AppointmentDetailUserListcell extends javafx.scene.control.ListCell
             stmt.executeUpdate("Delete from appointment_tbl where hoc_id = " + appointmentDetailUser.hoc_id + " and doc_id = " + appointmentDetailUser.doc_id + " and app_id = " + appointmentDetailUser.app_id);
         }
     }
-
